@@ -191,8 +191,7 @@ namespace ChessDotNet.Tests
             File f = File.F;
             File g = File.G;
             File h = File.H;
-            Piece[][] board = new Piece[8][]
-            {
+            Piece[][] board = {
                 new[] { rb, o, bb, qb, kb, bb, nb, rb },
                 new[] { pb, pb, pb, pb, pb, pb, pb, pb },
                 new[] { o, o, nb, o, o, o, o, o },
@@ -202,6 +201,7 @@ namespace ChessDotNet.Tests
                 new[] { pw, pw, pw, pw, o, pw, pw, pw },
                 new[] { rw, nw, bw, qw, kw, bw, nw, rw }
             };
+
             ChessGame cb = new ChessGame(board, Player.White);
             Assert.AreEqual(rw, cb.GetPieceAt(a, 1));
             Assert.AreEqual(nw, cb.GetPieceAt(b, 1));

@@ -2,29 +2,13 @@
 {
     public class Move
     {
-        public Position OriginalPosition
-        {
-            get;
-            private set;
-        }
+        public Position OriginalPosition { get; private set; }
 
-        public Position NewPosition
-        {
-            get;
-            private set;
-        }
+        public Position NewPosition { get; private set; }
 
-        public Player Player
-        {
-            get;
-            private set;
-        }
+        public Player Player { get; private set; }
 
-        public Piece Promotion
-        {
-            get;
-            private set;
-        }
+        public Piece Promotion { get; private set; }
 
         public Move(Position originalPosition, Position newPosition, Player player)
             : this(originalPosition, newPosition, player, null)
@@ -52,9 +36,9 @@
 
         public override bool Equals(object obj)
         {
-            if (obj == null || GetType() != obj.GetType())
+            if(obj == null || GetType() != obj.GetType())
                 return false;
-            if (ReferenceEquals(this, obj))
+            if(ReferenceEquals(this, obj))
                 return true;
             Move move1 = this;
             Move move2 = (Move)obj;
@@ -64,32 +48,22 @@
                 && move1.Promotion == move2.Promotion;
         }
 
-        public override int GetHashCode()
-        {
-            return new { OriginalPosition, NewPosition, Player, Promotion }.GetHashCode();
-        }
+        public override int GetHashCode() => new { OriginalPosition, NewPosition, Player, Promotion }.GetHashCode();
 
         public static bool operator ==(Move move1, Move move2)
         {
-            if (ReferenceEquals(move1, move2))
+            if(ReferenceEquals(move1, move2))
                 return true;
-            if ((object)move1 == null || (object)move2 == null)
+            if((object)move1 == null || (object)move2 == null)
                 return false;
             return move1.Equals(move2);
         }
 
         public static bool operator !=(Move move1, Move move2)
         {
-            if (ReferenceEquals(move1, move2))
-                return false;
-            if ((object)move1 == null || (object)move2 == null)
-                return true;
-            return !move1.Equals(move2);
+            return !(move1 == move2);
         }
 
-        public override string ToString()
-        {
-            return OriginalPosition.ToString() + "-" + NewPosition.ToString();
-        }
+        public override string ToString() => OriginalPosition + "-" + NewPosition;
     }
 }

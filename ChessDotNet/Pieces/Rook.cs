@@ -5,58 +5,48 @@ namespace ChessDotNet.Pieces
 {
     public class Rook : Piece
     {
-        public override Player Owner
-        {
-            get;
-            set;
-        }
+        public override Player Owner { get; set; }
 
-        public Rook(Player owner)
-        {
-            Owner = owner;
-        }
+        public Rook(Player owner) { Owner = owner; }
 
-        public override char GetFenCharacter()
-        {
-            return Owner == Player.White ? 'R' : 'r';
-        }
+        public override char GetFenCharacter() => Owner == Player.White ? 'R' : 'r';
 
         public override bool IsValidMove(Move move, ChessGame game)
         {
-            ChessUtilities.ThrowIfNull(move, "move");
-            ChessUtilities.ThrowIfNull(game, "game");
-            Position origin = move.OriginalPosition;
-            Position destination = move.NewPosition;
+            ChessUtilities.ThrowIfNull(move, nameof(move));
+            ChessUtilities.ThrowIfNull(game, nameof(game));
 
-            PositionDistance posDelta = new PositionDistance(origin, destination);
-            if (posDelta.DistanceX != 0 && posDelta.DistanceY != 0)
+            var origin = move.OriginalPosition;
+            var destination = move.NewPosition;
+
+            var posDelta = new PositionDistance(origin, destination);
+
+            if(posDelta.DistanceX != 0 && posDelta.DistanceY != 0)
                 return false;
-            bool increasingRank = destination.Rank > origin.Rank;
-            bool increasingFile = (int)destination.File > (int)origin.File;
-            if (posDelta.DistanceX == 0)
+
+            var increasingRank = destination.Rank > origin.Rank;
+            var increasingFile = (int)destination.File > (int)origin.File;
+
+            if(posDelta.DistanceX == 0)
             {
-                int f = (int)origin.File;
-                for (int r = origin.Rank + (increasingRank ? 1 : -1);
-                    increasingRank ? r < destination.Rank : r > destination.Rank;
-                    r += increasingRank ? 1 : -1)
+                var f = (int)origin.File;
+                var r = origin.Rank + (increasingRank ? 1 : -1);
+                while(increasingRank ? r < destination.Rank : r > destination.Rank)
                 {
-                    if (game.GetPieceAt((File)f, r) != null)
-                    {
+                    if(game.GetPieceAt((File)f, r) != null)
                         return false;
-                    }
+                    r += increasingRank ? 1 : -1;
                 }
             }
             else // (posDelta.DeltaY == 0)
             {
-                int r = origin.Rank;
-                for (int f = (int)origin.File + (increasingFile ? 1 : -1);
-                    increasingFile ? f < (int)destination.File : f > (int)destination.File;
-                    f += increasingFile ? 1 : -1)
+                var r = origin.Rank;
+                var f = (int)origin.File + (increasingFile ? 1 : -1);
+                while(increasingFile ? f < (int)destination.File : f > (int)destination.File)
                 {
-                    if (game.GetPieceAt((File)f, r) != null)
-                    {
+                    if(game.GetPieceAt((File)f, r) != null)
                         return false;
-                    }
+                    f += increasingFile ? 1 : -1;
                 }
             }
             return true;
@@ -64,32 +54,32 @@ namespace ChessDotNet.Pieces
 
         public override ReadOnlyCollection<Move> GetValidMoves(Position from, bool returnIfAny, ChessGame game)
         {
-            ChessUtilities.ThrowIfNull(from, "from");
-            List<Move> validMoves = new List<Move>();
-            Piece piece = game.GetPieceAt(from);
-            int l0 = game.BoardHeight;
-            int l1 = game.BoardWidth;
-            for (int i = -7; i < 8; i++)
+            ChessUtilities.ThrowIfNull(from, nameof(from));
+
+            var validMoves = new List<Move>();
+            var piece = game.GetPieceAt(from);
+
+            for(int i = -7; i < 8; i++)
             {
-                if (i == 0)
+                if(i == 0)
                     continue;
-                if (from.Rank + i > 0 && from.Rank + i <= l0)
+                if(from.Rank + i > 0 && from.Rank + i <= game.BoardHeight)
                 {
-                    Move move = new Move(from, new Position(from.File, from.Rank + i), piece.Owner);
-                    if (game.IsValidMove(move))
+                    var move = new Move(from, new Position(from.File, from.Rank + i), piece.Owner);
+                    if(game.IsValidMove(move))
                     {
                         validMoves.Add(move);
-                        if (returnIfAny)
+                        if(returnIfAny)
                             return new ReadOnlyCollection<Move>(validMoves);
                     }
                 }
-                if ((int)from.File + i > -1 && (int)from.File + i < l1)
+                if((int)from.File + i > -1 && (int)from.File + i < game.BoardWidth)
                 {
-                    Move move = new Move(from, new Position(from.File + i, from.Rank), piece.Owner);
-                    if (game.IsValidMove(move))
+                    var move = new Move(from, new Position(from.File + i, from.Rank), piece.Owner);
+                    if(game.IsValidMove(move))
                     {
                         validMoves.Add(move);
-                        if (returnIfAny)
+                        if(returnIfAny)
                             return new ReadOnlyCollection<Move>(validMoves);
                     }
                 }

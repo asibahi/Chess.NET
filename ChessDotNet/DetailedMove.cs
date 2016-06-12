@@ -2,25 +2,13 @@
 {
     public class DetailedMove : Move
     {
-        public Piece Piece
-        {
-            get;
-            private set;
-        }
+        public Piece Piece { get; private set; }
 
-        public bool IsCapture
-        {
-            get;
-            private set;
-        }
+        public bool IsCapture { get; private set; }
 
-        public CastlingType Castling
-        {
-            get;
-            private set;
-        }
+        public CastlingType Castling { get; private set; }
 
-        public DetailedMove(Position originalPosition, Position newPosition, Player player, Piece promotion, Piece piece, bool isCapture, CastlingType castling) : 
+        public DetailedMove(Position originalPosition, Position newPosition, Player player, Piece promotion, Piece piece, bool isCapture, CastlingType castling) :
             base(originalPosition, newPosition, player, promotion)
         {
             Piece = piece;
@@ -36,11 +24,14 @@
 
         public override bool Equals(object obj)
         {
-            if (obj == null || GetType() != obj.GetType())
+            if(obj == null || GetType() != obj.GetType())
                 return false;
-            if (ReferenceEquals(this, obj))
+
+            if(ReferenceEquals(this, obj))
                 return true;
-            DetailedMove move = (DetailedMove)obj;
+
+            var move = (DetailedMove)obj;
+
             return OriginalPosition.Equals(move.OriginalPosition)
                 && NewPosition.Equals(move.NewPosition)
                 && Player == move.Player
@@ -50,27 +41,22 @@
                 && Castling == move.Castling;
         }
 
-        public override int GetHashCode()
-        {
-            return new { OriginalPosition, NewPosition, Player, Promotion, Piece, IsCapture, Castling }.GetHashCode();
-        }
+        public override int GetHashCode() => new { OriginalPosition, NewPosition, Player, Promotion, Piece, IsCapture, Castling }.GetHashCode();
 
         public static bool operator ==(DetailedMove move1, DetailedMove move2)
         {
-            if (ReferenceEquals(move1, move2))
+            if(ReferenceEquals(move1, move2))
                 return true;
-            if ((object)move1 == null || (object)move2 == null)
+
+            if((object)move1 == null || (object)move2 == null)
                 return false;
+
             return move1.Equals(move2);
         }
 
         public static bool operator !=(DetailedMove move1, DetailedMove move2)
         {
-            if (ReferenceEquals(move1, move2))
-                return false;
-            if ((object)move1 == null || (object)move2 == null)
-                return true;
-            return !move1.Equals(move2);
+            return !(move1 == move2);
         }
 
 
