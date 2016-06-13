@@ -9,7 +9,9 @@ namespace ChessDotNet.Pieces
 
         public bool HasCastlingAbility { get; set; }
 
-        public King(Player owner) : this(owner, true) { }
+        public King(Player owner) : this(owner, true)
+        {
+        }
 
         public King(Player owner, bool hasCastlingAbility)
         {
@@ -24,7 +26,7 @@ namespace ChessDotNet.Pieces
             ChessUtilities.ThrowIfNull(move, nameof(move));
             var origin = move.OriginalPosition;
             var destination = move.NewPosition;
-            var distance = new PositionDistance(origin, destination);
+            var distance = new SquareDistance(origin, destination);
 
             if((distance.DistanceX != 1 || distance.DistanceY != 1)
                         && (distance.DistanceX != 0 || distance.DistanceY != 1)
@@ -38,7 +40,7 @@ namespace ChessDotNet.Pieces
             return CanCastle(origin, destination, game);
         }
 
-        protected virtual bool CanCastle(Position origin, Position destination, ChessGame game)
+        protected virtual bool CanCastle(Square origin, Square destination, ChessGame game)
         {
             if(!HasCastlingAbility)
                 return false;
@@ -54,16 +56,16 @@ namespace ChessDotNet.Pieces
                     if(game.WhiteRookAMoved || game.GetPieceAt(File.D, 1) != null
                         || game.GetPieceAt(File.C, 1) != null
                         || game.GetPieceAt(File.B, 1) != null
-                        || game.WouldBeInCheckAfter(new Move(new Position(File.E, 1), new Position(File.D, 1), Player.White), Player.White)
-                        || game.WouldBeInCheckAfter(new Move(new Position(File.E, 1), new Position(File.C, 1), Player.White), Player.White))
+                        || game.WouldBeInCheckAfter(new Move(new Square(File.E, 1), new Square(File.D, 1), Player.White), Player.White)
+                        || game.WouldBeInCheckAfter(new Move(new Square(File.E, 1), new Square(File.C, 1), Player.White), Player.White))
                         return false;
                 }
                 else
                 {
                     if(game.WhiteRookHMoved || game.GetPieceAt(File.F, 1) != null
                         || game.GetPieceAt(File.G, 1) != null
-                        || game.WouldBeInCheckAfter(new Move(new Position(File.E, 1), new Position(File.F, 1), Player.White), Player.White)
-                        || game.WouldBeInCheckAfter(new Move(new Position(File.E, 1), new Position(File.G, 1), Player.White), Player.White))
+                        || game.WouldBeInCheckAfter(new Move(new Square(File.E, 1), new Square(File.F, 1), Player.White), Player.White)
+                        || game.WouldBeInCheckAfter(new Move(new Square(File.E, 1), new Square(File.G, 1), Player.White), Player.White))
                         return false;
                 }
             }
@@ -78,23 +80,23 @@ namespace ChessDotNet.Pieces
                     if(game.BlackRookAMoved || game.GetPieceAt(File.D, 8) != null
                         || game.GetPieceAt(File.C, 8) != null
                         || game.GetPieceAt(File.B, 8) != null
-                        || game.WouldBeInCheckAfter(new Move(new Position(File.E, 8), new Position(File.D, 8), Player.Black), Player.Black)
-                        || game.WouldBeInCheckAfter(new Move(new Position(File.E, 8), new Position(File.C, 8), Player.Black), Player.Black))
+                        || game.WouldBeInCheckAfter(new Move(new Square(File.E, 8), new Square(File.D, 8), Player.Black), Player.Black)
+                        || game.WouldBeInCheckAfter(new Move(new Square(File.E, 8), new Square(File.C, 8), Player.Black), Player.Black))
                         return false;
                 }
                 else
                 {
                     if(game.BlackRookHMoved || game.GetPieceAt(File.F, 8) != null
                         || game.GetPieceAt(File.G, 8) != null
-                        || game.WouldBeInCheckAfter(new Move(new Position(File.E, 8), new Position(File.F, 8), Player.Black), Player.Black)
-                        || game.WouldBeInCheckAfter(new Move(new Position(File.E, 8), new Position(File.G, 8), Player.Black), Player.Black))
+                        || game.WouldBeInCheckAfter(new Move(new Square(File.E, 8), new Square(File.F, 8), Player.Black), Player.Black)
+                        || game.WouldBeInCheckAfter(new Move(new Square(File.E, 8), new Square(File.G, 8), Player.Black), Player.Black))
                         return false;
                 }
             }
             return true;
         }
 
-        public override ReadOnlyCollection<Move> GetValidMoves(Position from, bool returnIfAny, ChessGame game)
+        public override ReadOnlyCollection<Move> GetValidMoves(Square from, bool returnIfAny, ChessGame game)
         {
             ChessUtilities.ThrowIfNull(from, nameof(from));
             var validMoves = new List<Move>();
@@ -116,7 +118,7 @@ namespace ChessDotNet.Pieces
             {
                 if((int)from.File + dir[0] < 0 || (int)from.File + dir[0] >= game.BoardWidth || from.Rank + dir[1] < 1 || from.Rank + dir[1] > game.BoardHeight)
                     continue;
-                var move = new Move(from, new Position(from.File + dir[0], from.Rank + dir[1]), piece.Owner);
+                var move = new Move(from, new Square(from.File + dir[0], from.Rank + dir[1]), piece.Owner);
                 if(game.IsValidMove(move))
                 {
                     validMoves.Add(move);

@@ -7,7 +7,10 @@ namespace ChessDotNet.Pieces
     {
         public override Player Owner { get; set; }
 
-        public Pawn(Player owner) { Owner = owner; }
+        public Pawn(Player owner)
+        {
+            Owner = owner;
+        }
 
         public override char GetFenCharacter() => Owner == Player.White ? 'P' : 'p';
 
@@ -20,7 +23,7 @@ namespace ChessDotNet.Pieces
             var destination = move.NewPosition;
 
             var promotion = move.Promotion;
-            var posDelta = new PositionDistance(origin, destination);
+            var posDelta = new SquareDistance(origin, destination);
 
             if((posDelta.DistanceX != 0 || posDelta.DistanceY != 1) && (posDelta.DistanceX != 1 || posDelta.DistanceY != 1)
                         && (posDelta.DistanceX != 0 || posDelta.DistanceY != 2))
@@ -106,18 +109,18 @@ namespace ChessDotNet.Pieces
             return true;
         }
 
-        public override ReadOnlyCollection<Move> GetValidMoves(Position from, bool returnIfAny, ChessGame game)
+        public override ReadOnlyCollection<Move> GetValidMoves(Square from, bool returnIfAny, ChessGame game)
         {
             ChessUtilities.ThrowIfNull(from, nameof(from));
-            
+
             var validMoves = new List<Move>();
             var piece = game.GetPieceAt(from);
 
             var l0 = game.BoardHeight;
             var l1 = game.BoardWidth;
 
-            var directions = 
-                piece.Owner == Player.White ? new int[][] { new int[] { 0, 1 }, new int[] { 0, 2 }, new int[] { 1, 1 }, new int[] { -1, 1 } } : 
+            var directions =
+                piece.Owner == Player.White ? new int[][] { new int[] { 0, 1 }, new int[] { 0, 2 }, new int[] { 1, 1 }, new int[] { -1, 1 } } :
                                               new int[][] { new int[] { 0, -1 }, new int[] { 0, -2 }, new int[] { -1, -1 }, new int[] { 1, -1 } };
 
             foreach(int[] dir in directions)
@@ -125,7 +128,7 @@ namespace ChessDotNet.Pieces
                 if((int)from.File + dir[0] < 0 || (int)from.File + dir[0] >= l1
                     || from.Rank + dir[1] < 1 || from.Rank + dir[1] > l0)
                     continue;
-                var move = new Move(from, new Position(from.File + dir[0], from.Rank + dir[1]), piece.Owner);
+                var move = new Move(from, new Square(from.File + dir[0], from.Rank + dir[1]), piece.Owner);
                 var moves = new List<Move>();
 
                 if((move.NewPosition.Rank == 8 && move.Player == Player.White) || (move.NewPosition.Rank == 1 && move.Player == Player.Black))

@@ -8,7 +8,7 @@
 
         public CastlingType Castling { get; private set; }
 
-        public DetailedMove(Position originalPosition, Position newPosition, Player player, Piece promotion, Piece piece, bool isCapture, CastlingType castling) :
+        public DetailedMove(Square originalPosition, Square newPosition, Player player, Piece promotion, Piece piece, bool isCapture, CastlingType castling) :
             base(originalPosition, newPosition, player, promotion)
         {
             Piece = piece;
@@ -20,7 +20,6 @@
             : this(move.OriginalPosition, move.NewPosition, move.Player, move.Promotion, piece, isCapture, castling)
         {
         }
-
 
         public override bool Equals(object obj)
         {
@@ -58,7 +57,5 @@
         {
             return !(move1 == move2);
         }
-
-
     }
 }

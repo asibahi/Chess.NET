@@ -7,7 +7,10 @@ namespace ChessDotNet.Pieces
     {
         public override Player Owner { get; set; }
 
-        public Knight(Player owner) { Owner = owner; }
+        public Knight(Player owner)
+        {
+            Owner = owner;
+        }
 
         public override char GetFenCharacter() => Owner == Player.White ? 'N' : 'n';
 
@@ -19,7 +22,7 @@ namespace ChessDotNet.Pieces
             var origin = move.OriginalPosition;
             var destination = move.NewPosition;
 
-            var posDelta = new PositionDistance(origin, destination);
+            var posDelta = new SquareDistance(origin, destination);
 
             if((posDelta.DistanceX != 2 || posDelta.DistanceY != 1) && (posDelta.DistanceX != 1 || posDelta.DistanceY != 2))
                 return false;
@@ -27,7 +30,7 @@ namespace ChessDotNet.Pieces
             return true;
         }
 
-        public override ReadOnlyCollection<Move> GetValidMoves(Position from, bool returnIfAny, ChessGame game)
+        public override ReadOnlyCollection<Move> GetValidMoves(Square from, bool returnIfAny, ChessGame game)
         {
             var validMoves = new List<Move>();
             var piece = game.GetPieceAt(from);
@@ -48,7 +51,7 @@ namespace ChessDotNet.Pieces
                     || from.Rank + dir[1] < 1 || from.Rank + dir[1] > l0)
                     continue;
 
-                var move = new Move(from, new Position(from.File + dir[0], from.Rank + dir[1]), piece.Owner);
+                var move = new Move(from, new Square(from.File + dir[0], from.Rank + dir[1]), piece.Owner);
                 if(game.IsValidMove(move))
                 {
                     validMoves.Add(move);

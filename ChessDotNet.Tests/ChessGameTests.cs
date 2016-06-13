@@ -1,6 +1,6 @@
-﻿using NUnit.Framework;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using NUnit.Framework;
 
 namespace ChessDotNet.Tests
 {
@@ -21,281 +21,256 @@ namespace ChessDotNet.Tests
         static readonly Piece bb = new Bishop(Player.Black);
         static readonly Piece pw = new Pawn(Player.White);
         static readonly Piece pb = new Pawn(Player.Black);
-        static readonly Piece o = null;
+        static readonly Piece __ = null;
 
         [Test]
         public static void TestArrayGetting()
         {
-            ChessGame cb = new ChessGame();
-            int a = (int)File.A;
-            int b = (int)File.B;
-            int c = (int)File.C;
-            int d = (int)File.D;
-            int e = (int)File.E;
-            int f = (int)File.F;
-            int g = (int)File.G;
-            int h = (int)File.H;
-            Piece[][] board = cb.GetBoard();
-            Assert.AreEqual(rw, board[7][a]);
-            Assert.AreEqual(nw, board[7][b]);
-            Assert.AreEqual(bw, board[7][c]);
-            Assert.AreEqual(qw, board[7][d]);
-            Assert.AreEqual(kw, board[7][e]);
-            Assert.AreEqual(bw, board[7][f]);
-            Assert.AreEqual(nw, board[7][g]);
-            Assert.AreEqual(rw, board[7][h]);
-            Assert.AreEqual(pw, board[6][a]);
-            Assert.AreEqual(pw, board[6][b]);
-            Assert.AreEqual(pw, board[6][c]);
-            Assert.AreEqual(pw, board[6][d]);
-            Assert.AreEqual(pw, board[6][e]);
-            Assert.AreEqual(pw, board[6][f]);
-            Assert.AreEqual(pw, board[6][g]);
-            Assert.AreEqual(pw, board[6][h]);
-            Assert.AreEqual(o, board[5][a]);
-            Assert.AreEqual(o, board[5][b]);
-            Assert.AreEqual(o, board[5][c]);
-            Assert.AreEqual(o, board[5][d]);
-            Assert.AreEqual(o, board[5][e]);
-            Assert.AreEqual(o, board[5][f]);
-            Assert.AreEqual(o, board[5][g]);
-            Assert.AreEqual(o, board[5][h]);
-            Assert.AreEqual(o, board[4][a]);
-            Assert.AreEqual(o, board[4][b]);
-            Assert.AreEqual(o, board[4][c]);
-            Assert.AreEqual(o, board[4][d]);
-            Assert.AreEqual(o, board[4][e]);
-            Assert.AreEqual(o, board[4][f]);
-            Assert.AreEqual(o, board[4][g]);
-            Assert.AreEqual(o, board[4][h]);
-            Assert.AreEqual(o, board[3][a]);
-            Assert.AreEqual(o, board[3][b]);
-            Assert.AreEqual(o, board[3][c]);
-            Assert.AreEqual(o, board[3][d]);
-            Assert.AreEqual(o, board[3][e]);
-            Assert.AreEqual(o, board[3][f]);
-            Assert.AreEqual(o, board[3][g]);
-            Assert.AreEqual(o, board[3][h]);
-            Assert.AreEqual(o, board[2][a]);
-            Assert.AreEqual(o, board[2][b]);
-            Assert.AreEqual(o, board[2][c]);
-            Assert.AreEqual(o, board[2][d]);
-            Assert.AreEqual(o, board[2][e]);
-            Assert.AreEqual(o, board[2][f]);
-            Assert.AreEqual(o, board[2][g]);
-            Assert.AreEqual(o, board[2][h]);
-            Assert.AreEqual(pb, board[1][a]);
-            Assert.AreEqual(pb, board[1][b]);
-            Assert.AreEqual(pb, board[1][c]);
-            Assert.AreEqual(pb, board[1][d]);
-            Assert.AreEqual(pb, board[1][e]);
-            Assert.AreEqual(pb, board[1][f]);
-            Assert.AreEqual(pb, board[1][g]);
-            Assert.AreEqual(pb, board[1][h]);
-            Assert.AreEqual(rb, board[0][a]);
-            Assert.AreEqual(nb, board[0][b]);
-            Assert.AreEqual(bb, board[0][c]);
-            Assert.AreEqual(qb, board[0][d]);
-            Assert.AreEqual(kb, board[0][e]);
-            Assert.AreEqual(bb, board[0][f]);
-            Assert.AreEqual(nb, board[0][g]);
-            Assert.AreEqual(rb, board[0][h]);
+            var board = new ChessGame().GetBoard();
+            Assert.AreEqual(rw, board[7][(int)File.A]);
+            Assert.AreEqual(nw, board[7][(int)File.B]);
+            Assert.AreEqual(bw, board[7][(int)File.C]);
+            Assert.AreEqual(qw, board[7][(int)File.D]);
+            Assert.AreEqual(kw, board[7][(int)File.E]);
+            Assert.AreEqual(bw, board[7][(int)File.F]);
+            Assert.AreEqual(nw, board[7][(int)File.G]);
+            Assert.AreEqual(rw, board[7][(int)File.H]);
+            Assert.AreEqual(pw, board[6][(int)File.A]);
+            Assert.AreEqual(pw, board[6][(int)File.B]);
+            Assert.AreEqual(pw, board[6][(int)File.C]);
+            Assert.AreEqual(pw, board[6][(int)File.D]);
+            Assert.AreEqual(pw, board[6][(int)File.E]);
+            Assert.AreEqual(pw, board[6][(int)File.F]);
+            Assert.AreEqual(pw, board[6][(int)File.G]);
+            Assert.AreEqual(pw, board[6][(int)File.H]);
+            Assert.AreEqual(__, board[5][(int)File.A]);
+            Assert.AreEqual(__, board[5][(int)File.B]);
+            Assert.AreEqual(__, board[5][(int)File.C]);
+            Assert.AreEqual(__, board[5][(int)File.D]);
+            Assert.AreEqual(__, board[5][(int)File.E]);
+            Assert.AreEqual(__, board[5][(int)File.F]);
+            Assert.AreEqual(__, board[5][(int)File.G]);
+            Assert.AreEqual(__, board[5][(int)File.H]);
+            Assert.AreEqual(__, board[4][(int)File.A]);
+            Assert.AreEqual(__, board[4][(int)File.B]);
+            Assert.AreEqual(__, board[4][(int)File.C]);
+            Assert.AreEqual(__, board[4][(int)File.D]);
+            Assert.AreEqual(__, board[4][(int)File.E]);
+            Assert.AreEqual(__, board[4][(int)File.F]);
+            Assert.AreEqual(__, board[4][(int)File.G]);
+            Assert.AreEqual(__, board[4][(int)File.H]);
+            Assert.AreEqual(__, board[3][(int)File.A]);
+            Assert.AreEqual(__, board[3][(int)File.B]);
+            Assert.AreEqual(__, board[3][(int)File.C]);
+            Assert.AreEqual(__, board[3][(int)File.D]);
+            Assert.AreEqual(__, board[3][(int)File.E]);
+            Assert.AreEqual(__, board[3][(int)File.F]);
+            Assert.AreEqual(__, board[3][(int)File.G]);
+            Assert.AreEqual(__, board[3][(int)File.H]);
+            Assert.AreEqual(__, board[2][(int)File.A]);
+            Assert.AreEqual(__, board[2][(int)File.B]);
+            Assert.AreEqual(__, board[2][(int)File.C]);
+            Assert.AreEqual(__, board[2][(int)File.D]);
+            Assert.AreEqual(__, board[2][(int)File.E]);
+            Assert.AreEqual(__, board[2][(int)File.F]);
+            Assert.AreEqual(__, board[2][(int)File.G]);
+            Assert.AreEqual(__, board[2][(int)File.H]);
+            Assert.AreEqual(pb, board[1][(int)File.A]);
+            Assert.AreEqual(pb, board[1][(int)File.B]);
+            Assert.AreEqual(pb, board[1][(int)File.C]);
+            Assert.AreEqual(pb, board[1][(int)File.D]);
+            Assert.AreEqual(pb, board[1][(int)File.E]);
+            Assert.AreEqual(pb, board[1][(int)File.F]);
+            Assert.AreEqual(pb, board[1][(int)File.G]);
+            Assert.AreEqual(pb, board[1][(int)File.H]);
+            Assert.AreEqual(rb, board[0][(int)File.A]);
+            Assert.AreEqual(nb, board[0][(int)File.B]);
+            Assert.AreEqual(bb, board[0][(int)File.C]);
+            Assert.AreEqual(qb, board[0][(int)File.D]);
+            Assert.AreEqual(kb, board[0][(int)File.E]);
+            Assert.AreEqual(bb, board[0][(int)File.F]);
+            Assert.AreEqual(nb, board[0][(int)File.G]);
+            Assert.AreEqual(rb, board[0][(int)File.H]);
         }
 
         [Test]
         public static void TestGetPieceAt()
         {
-            ChessGame cb = new ChessGame();
-            File a = File.A;
-            File b = File.B;
-            File c = File.C;
-            File d = File.D;
-            File e = File.E;
-            File f = File.F;
-            File g = File.G;
-            File h = File.H;
-            Assert.AreEqual(rw, cb.GetPieceAt(a, 1));
-            Assert.AreEqual(nw, cb.GetPieceAt(b, 1));
-            Assert.AreEqual(bw, cb.GetPieceAt(c, 1));
-            Assert.AreEqual(qw, cb.GetPieceAt(d, 1));
-            Assert.AreEqual(kw, cb.GetPieceAt(e, 1));
-            Assert.AreEqual(bw, cb.GetPieceAt(f, 1));
-            Assert.AreEqual(nw, cb.GetPieceAt(g, 1));
-            Assert.AreEqual(rw, cb.GetPieceAt(h, 1));
-            Assert.AreEqual(pw, cb.GetPieceAt(a, 2));
-            Assert.AreEqual(pw, cb.GetPieceAt(b, 2));
-            Assert.AreEqual(pw, cb.GetPieceAt(c, 2));
-            Assert.AreEqual(pw, cb.GetPieceAt(d, 2));
-            Assert.AreEqual(pw, cb.GetPieceAt(e, 2));
-            Assert.AreEqual(pw, cb.GetPieceAt(f, 2));
-            Assert.AreEqual(pw, cb.GetPieceAt(g, 2));
-            Assert.AreEqual(pw, cb.GetPieceAt(h, 2));
-            Assert.AreEqual(o, cb.GetPieceAt(a, 3));
-            Assert.AreEqual(o, cb.GetPieceAt(b, 3));
-            Assert.AreEqual(o, cb.GetPieceAt(c, 3));
-            Assert.AreEqual(o, cb.GetPieceAt(d, 3));
-            Assert.AreEqual(o, cb.GetPieceAt(e, 3));
-            Assert.AreEqual(o, cb.GetPieceAt(f, 3));
-            Assert.AreEqual(o, cb.GetPieceAt(g, 3));
-            Assert.AreEqual(o, cb.GetPieceAt(h, 3));
-            Assert.AreEqual(o, cb.GetPieceAt(a, 4));
-            Assert.AreEqual(o, cb.GetPieceAt(b, 4));
-            Assert.AreEqual(o, cb.GetPieceAt(c, 4));
-            Assert.AreEqual(o, cb.GetPieceAt(d, 4));
-            Assert.AreEqual(o, cb.GetPieceAt(e, 4));
-            Assert.AreEqual(o, cb.GetPieceAt(f, 4));
-            Assert.AreEqual(o, cb.GetPieceAt(g, 4));
-            Assert.AreEqual(o, cb.GetPieceAt(h, 4));
-            Assert.AreEqual(o, cb.GetPieceAt(a, 5));
-            Assert.AreEqual(o, cb.GetPieceAt(b, 5));
-            Assert.AreEqual(o, cb.GetPieceAt(c, 5));
-            Assert.AreEqual(o, cb.GetPieceAt(d, 5));
-            Assert.AreEqual(o, cb.GetPieceAt(e, 5));
-            Assert.AreEqual(o, cb.GetPieceAt(f, 5));
-            Assert.AreEqual(o, cb.GetPieceAt(g, 5));
-            Assert.AreEqual(o, cb.GetPieceAt(h, 5));
-            Assert.AreEqual(o, cb.GetPieceAt(a, 6));
-            Assert.AreEqual(o, cb.GetPieceAt(b, 6));
-            Assert.AreEqual(o, cb.GetPieceAt(c, 6));
-            Assert.AreEqual(o, cb.GetPieceAt(d, 6));
-            Assert.AreEqual(o, cb.GetPieceAt(e, 6));
-            Assert.AreEqual(o, cb.GetPieceAt(f, 6));
-            Assert.AreEqual(o, cb.GetPieceAt(g, 6));
-            Assert.AreEqual(o, cb.GetPieceAt(h, 6));
-            Assert.AreEqual(pb, cb.GetPieceAt(a, 7));
-            Assert.AreEqual(pb, cb.GetPieceAt(b, 7));
-            Assert.AreEqual(pb, cb.GetPieceAt(c, 7));
-            Assert.AreEqual(pb, cb.GetPieceAt(d, 7));
-            Assert.AreEqual(pb, cb.GetPieceAt(e, 7));
-            Assert.AreEqual(pb, cb.GetPieceAt(f, 7));
-            Assert.AreEqual(pb, cb.GetPieceAt(g, 7));
-            Assert.AreEqual(pb, cb.GetPieceAt(h, 7));
-            Assert.AreEqual(rb, cb.GetPieceAt(a, 8));
-            Assert.AreEqual(nb, cb.GetPieceAt(b, 8));
-            Assert.AreEqual(bb, cb.GetPieceAt(c, 8));
-            Assert.AreEqual(qb, cb.GetPieceAt(d, 8));
-            Assert.AreEqual(kb, cb.GetPieceAt(e, 8));
-            Assert.AreEqual(bb, cb.GetPieceAt(f, 8));
-            Assert.AreEqual(nb, cb.GetPieceAt(g, 8));
-            Assert.AreEqual(rb, cb.GetPieceAt(h, 8));
+            var cb = new ChessGame();
+            Assert.AreEqual(rw, cb.GetPieceAt(File.A, 1));
+            Assert.AreEqual(nw, cb.GetPieceAt(File.B, 1));
+            Assert.AreEqual(bw, cb.GetPieceAt(File.C, 1));
+            Assert.AreEqual(qw, cb.GetPieceAt(File.D, 1));
+            Assert.AreEqual(kw, cb.GetPieceAt(File.E, 1));
+            Assert.AreEqual(bw, cb.GetPieceAt(File.F, 1));
+            Assert.AreEqual(nw, cb.GetPieceAt(File.G, 1));
+            Assert.AreEqual(rw, cb.GetPieceAt(File.H, 1));
+            Assert.AreEqual(pw, cb.GetPieceAt(File.A, 2));
+            Assert.AreEqual(pw, cb.GetPieceAt(File.B, 2));
+            Assert.AreEqual(pw, cb.GetPieceAt(File.C, 2));
+            Assert.AreEqual(pw, cb.GetPieceAt(File.D, 2));
+            Assert.AreEqual(pw, cb.GetPieceAt(File.E, 2));
+            Assert.AreEqual(pw, cb.GetPieceAt(File.F, 2));
+            Assert.AreEqual(pw, cb.GetPieceAt(File.G, 2));
+            Assert.AreEqual(pw, cb.GetPieceAt(File.H, 2));
+            Assert.AreEqual(__, cb.GetPieceAt(File.A, 3));
+            Assert.AreEqual(__, cb.GetPieceAt(File.B, 3));
+            Assert.AreEqual(__, cb.GetPieceAt(File.C, 3));
+            Assert.AreEqual(__, cb.GetPieceAt(File.D, 3));
+            Assert.AreEqual(__, cb.GetPieceAt(File.E, 3));
+            Assert.AreEqual(__, cb.GetPieceAt(File.F, 3));
+            Assert.AreEqual(__, cb.GetPieceAt(File.G, 3));
+            Assert.AreEqual(__, cb.GetPieceAt(File.H, 3));
+            Assert.AreEqual(__, cb.GetPieceAt(File.A, 4));
+            Assert.AreEqual(__, cb.GetPieceAt(File.B, 4));
+            Assert.AreEqual(__, cb.GetPieceAt(File.C, 4));
+            Assert.AreEqual(__, cb.GetPieceAt(File.D, 4));
+            Assert.AreEqual(__, cb.GetPieceAt(File.E, 4));
+            Assert.AreEqual(__, cb.GetPieceAt(File.F, 4));
+            Assert.AreEqual(__, cb.GetPieceAt(File.G, 4));
+            Assert.AreEqual(__, cb.GetPieceAt(File.H, 4));
+            Assert.AreEqual(__, cb.GetPieceAt(File.A, 5));
+            Assert.AreEqual(__, cb.GetPieceAt(File.B, 5));
+            Assert.AreEqual(__, cb.GetPieceAt(File.C, 5));
+            Assert.AreEqual(__, cb.GetPieceAt(File.D, 5));
+            Assert.AreEqual(__, cb.GetPieceAt(File.E, 5));
+            Assert.AreEqual(__, cb.GetPieceAt(File.F, 5));
+            Assert.AreEqual(__, cb.GetPieceAt(File.G, 5));
+            Assert.AreEqual(__, cb.GetPieceAt(File.H, 5));
+            Assert.AreEqual(__, cb.GetPieceAt(File.A, 6));
+            Assert.AreEqual(__, cb.GetPieceAt(File.B, 6));
+            Assert.AreEqual(__, cb.GetPieceAt(File.C, 6));
+            Assert.AreEqual(__, cb.GetPieceAt(File.D, 6));
+            Assert.AreEqual(__, cb.GetPieceAt(File.E, 6));
+            Assert.AreEqual(__, cb.GetPieceAt(File.F, 6));
+            Assert.AreEqual(__, cb.GetPieceAt(File.G, 6));
+            Assert.AreEqual(__, cb.GetPieceAt(File.H, 6));
+            Assert.AreEqual(pb, cb.GetPieceAt(File.A, 7));
+            Assert.AreEqual(pb, cb.GetPieceAt(File.B, 7));
+            Assert.AreEqual(pb, cb.GetPieceAt(File.C, 7));
+            Assert.AreEqual(pb, cb.GetPieceAt(File.D, 7));
+            Assert.AreEqual(pb, cb.GetPieceAt(File.E, 7));
+            Assert.AreEqual(pb, cb.GetPieceAt(File.F, 7));
+            Assert.AreEqual(pb, cb.GetPieceAt(File.G, 7));
+            Assert.AreEqual(pb, cb.GetPieceAt(File.H, 7));
+            Assert.AreEqual(rb, cb.GetPieceAt(File.A, 8));
+            Assert.AreEqual(nb, cb.GetPieceAt(File.B, 8));
+            Assert.AreEqual(bb, cb.GetPieceAt(File.C, 8));
+            Assert.AreEqual(qb, cb.GetPieceAt(File.D, 8));
+            Assert.AreEqual(kb, cb.GetPieceAt(File.E, 8));
+            Assert.AreEqual(bb, cb.GetPieceAt(File.F, 8));
+            Assert.AreEqual(nb, cb.GetPieceAt(File.G, 8));
+            Assert.AreEqual(rb, cb.GetPieceAt(File.H, 8));
         }
 
         [Test]
         public static void TestCustomInitialize()
         {
-            File a = File.A;
-            File b = File.B;
-            File c = File.C;
-            File d = File.D;
-            File e = File.E;
-            File f = File.F;
-            File g = File.G;
-            File h = File.H;
-            Piece[][] board = {
-                new[] { rb, o, bb, qb, kb, bb, nb, rb },
+            var board = new Piece[8][]{
+                new[] { rb, __, bb, qb, kb, bb, nb, rb },
                 new[] { pb, pb, pb, pb, pb, pb, pb, pb },
-                new[] { o, o, nb, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, pw, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { pw, pw, pw, pw, o, pw, pw, pw },
+                new[] { __, __, nb, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, pw, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { pw, pw, pw, pw, __, pw, pw, pw },
                 new[] { rw, nw, bw, qw, kw, bw, nw, rw }
             };
 
-            ChessGame cb = new ChessGame(board, Player.White);
-            Assert.AreEqual(rw, cb.GetPieceAt(a, 1));
-            Assert.AreEqual(nw, cb.GetPieceAt(b, 1));
-            Assert.AreEqual(bw, cb.GetPieceAt(c, 1));
-            Assert.AreEqual(qw, cb.GetPieceAt(d, 1));
-            Assert.AreEqual(kw, cb.GetPieceAt(e, 1));
-            Assert.AreEqual(bw, cb.GetPieceAt(f, 1));
-            Assert.AreEqual(nw, cb.GetPieceAt(g, 1));
-            Assert.AreEqual(rw, cb.GetPieceAt(h, 1));
-            Assert.AreEqual(pw, cb.GetPieceAt(a, 2));
-            Assert.AreEqual(pw, cb.GetPieceAt(b, 2));
-            Assert.AreEqual(pw, cb.GetPieceAt(c, 2));
-            Assert.AreEqual(pw, cb.GetPieceAt(d, 2));
-            Assert.AreEqual(o, cb.GetPieceAt(e, 2));
-            Assert.AreEqual(pw, cb.GetPieceAt(f, 2));
-            Assert.AreEqual(pw, cb.GetPieceAt(g, 2));
-            Assert.AreEqual(pw, cb.GetPieceAt(h, 2));
-            Assert.AreEqual(o, cb.GetPieceAt(a, 3));
-            Assert.AreEqual(o, cb.GetPieceAt(b, 3));
-            Assert.AreEqual(o, cb.GetPieceAt(c, 3));
-            Assert.AreEqual(o, cb.GetPieceAt(d, 3));
-            Assert.AreEqual(o, cb.GetPieceAt(e, 3));
-            Assert.AreEqual(o, cb.GetPieceAt(f, 3));
-            Assert.AreEqual(o, cb.GetPieceAt(g, 3));
-            Assert.AreEqual(o, cb.GetPieceAt(h, 3));
-            Assert.AreEqual(o, cb.GetPieceAt(a, 4));
-            Assert.AreEqual(o, cb.GetPieceAt(b, 4));
-            Assert.AreEqual(o, cb.GetPieceAt(c, 4));
-            Assert.AreEqual(o, cb.GetPieceAt(d, 4));
-            Assert.AreEqual(pw, cb.GetPieceAt(e, 4));
-            Assert.AreEqual(o, cb.GetPieceAt(f, 4));
-            Assert.AreEqual(o, cb.GetPieceAt(g, 4));
-            Assert.AreEqual(o, cb.GetPieceAt(h, 4));
-            Assert.AreEqual(o, cb.GetPieceAt(a, 5));
-            Assert.AreEqual(o, cb.GetPieceAt(b, 5));
-            Assert.AreEqual(o, cb.GetPieceAt(c, 5));
-            Assert.AreEqual(o, cb.GetPieceAt(d, 5));
-            Assert.AreEqual(o, cb.GetPieceAt(e, 5));
-            Assert.AreEqual(o, cb.GetPieceAt(f, 5));
-            Assert.AreEqual(o, cb.GetPieceAt(g, 5));
-            Assert.AreEqual(o, cb.GetPieceAt(h, 5));
-            Assert.AreEqual(o, cb.GetPieceAt(a, 6));
-            Assert.AreEqual(o, cb.GetPieceAt(b, 6));
-            Assert.AreEqual(cb.GetPieceAt(c, 6), nb);
-            Assert.AreEqual(o, cb.GetPieceAt(d, 6));
-            Assert.AreEqual(o, cb.GetPieceAt(e, 6));
-            Assert.AreEqual(o, cb.GetPieceAt(f, 6));
-            Assert.AreEqual(o, cb.GetPieceAt(g, 6));
-            Assert.AreEqual(o, cb.GetPieceAt(h, 6));
-            Assert.AreEqual(pb, cb.GetPieceAt(a, 7));
-            Assert.AreEqual(pb, cb.GetPieceAt(b, 7));
-            Assert.AreEqual(pb, cb.GetPieceAt(c, 7));
-            Assert.AreEqual(pb, cb.GetPieceAt(d, 7));
-            Assert.AreEqual(pb, cb.GetPieceAt(e, 7));
-            Assert.AreEqual(pb, cb.GetPieceAt(f, 7));
-            Assert.AreEqual(pb, cb.GetPieceAt(g, 7));
-            Assert.AreEqual(pb, cb.GetPieceAt(h, 7));
-            Assert.AreEqual(rb, cb.GetPieceAt(a, 8));
-            Assert.AreEqual(o, cb.GetPieceAt(b, 8));
-            Assert.AreEqual(bb, cb.GetPieceAt(c, 8));
-            Assert.AreEqual(qb, cb.GetPieceAt(d, 8));
-            Assert.AreEqual(kb, cb.GetPieceAt(e, 8));
-            Assert.AreEqual(bb, cb.GetPieceAt(f, 8));
-            Assert.AreEqual(nb, cb.GetPieceAt(g, 8));
-            Assert.AreEqual(rb, cb.GetPieceAt(h, 8));
+            var cb = new ChessGame(board, Player.White);
+            Assert.AreEqual(rw, cb.GetPieceAt(File.A, 1));
+            Assert.AreEqual(nw, cb.GetPieceAt(File.B, 1));
+            Assert.AreEqual(bw, cb.GetPieceAt(File.C, 1));
+            Assert.AreEqual(qw, cb.GetPieceAt(File.D, 1));
+            Assert.AreEqual(kw, cb.GetPieceAt(File.E, 1));
+            Assert.AreEqual(bw, cb.GetPieceAt(File.F, 1));
+            Assert.AreEqual(nw, cb.GetPieceAt(File.G, 1));
+            Assert.AreEqual(rw, cb.GetPieceAt(File.H, 1));
+            Assert.AreEqual(pw, cb.GetPieceAt(File.A, 2));
+            Assert.AreEqual(pw, cb.GetPieceAt(File.B, 2));
+            Assert.AreEqual(pw, cb.GetPieceAt(File.C, 2));
+            Assert.AreEqual(pw, cb.GetPieceAt(File.D, 2));
+            Assert.AreEqual(__, cb.GetPieceAt(File.E, 2));
+            Assert.AreEqual(pw, cb.GetPieceAt(File.F, 2));
+            Assert.AreEqual(pw, cb.GetPieceAt(File.G, 2));
+            Assert.AreEqual(pw, cb.GetPieceAt(File.H, 2));
+            Assert.AreEqual(__, cb.GetPieceAt(File.A, 3));
+            Assert.AreEqual(__, cb.GetPieceAt(File.B, 3));
+            Assert.AreEqual(__, cb.GetPieceAt(File.C, 3));
+            Assert.AreEqual(__, cb.GetPieceAt(File.D, 3));
+            Assert.AreEqual(__, cb.GetPieceAt(File.E, 3));
+            Assert.AreEqual(__, cb.GetPieceAt(File.F, 3));
+            Assert.AreEqual(__, cb.GetPieceAt(File.G, 3));
+            Assert.AreEqual(__, cb.GetPieceAt(File.H, 3));
+            Assert.AreEqual(__, cb.GetPieceAt(File.A, 4));
+            Assert.AreEqual(__, cb.GetPieceAt(File.B, 4));
+            Assert.AreEqual(__, cb.GetPieceAt(File.C, 4));
+            Assert.AreEqual(__, cb.GetPieceAt(File.D, 4));
+            Assert.AreEqual(pw, cb.GetPieceAt(File.E, 4));
+            Assert.AreEqual(__, cb.GetPieceAt(File.F, 4));
+            Assert.AreEqual(__, cb.GetPieceAt(File.G, 4));
+            Assert.AreEqual(__, cb.GetPieceAt(File.H, 4));
+            Assert.AreEqual(__, cb.GetPieceAt(File.A, 5));
+            Assert.AreEqual(__, cb.GetPieceAt(File.B, 5));
+            Assert.AreEqual(__, cb.GetPieceAt(File.C, 5));
+            Assert.AreEqual(__, cb.GetPieceAt(File.D, 5));
+            Assert.AreEqual(__, cb.GetPieceAt(File.E, 5));
+            Assert.AreEqual(__, cb.GetPieceAt(File.F, 5));
+            Assert.AreEqual(__, cb.GetPieceAt(File.G, 5));
+            Assert.AreEqual(__, cb.GetPieceAt(File.H, 5));
+            Assert.AreEqual(__, cb.GetPieceAt(File.A, 6));
+            Assert.AreEqual(__, cb.GetPieceAt(File.B, 6));
+            Assert.AreEqual(nb, cb.GetPieceAt(File.C, 6));
+            Assert.AreEqual(__, cb.GetPieceAt(File.D, 6));
+            Assert.AreEqual(__, cb.GetPieceAt(File.E, 6));
+            Assert.AreEqual(__, cb.GetPieceAt(File.F, 6));
+            Assert.AreEqual(__, cb.GetPieceAt(File.G, 6));
+            Assert.AreEqual(__, cb.GetPieceAt(File.H, 6));
+            Assert.AreEqual(pb, cb.GetPieceAt(File.A, 7));
+            Assert.AreEqual(pb, cb.GetPieceAt(File.B, 7));
+            Assert.AreEqual(pb, cb.GetPieceAt(File.C, 7));
+            Assert.AreEqual(pb, cb.GetPieceAt(File.D, 7));
+            Assert.AreEqual(pb, cb.GetPieceAt(File.E, 7));
+            Assert.AreEqual(pb, cb.GetPieceAt(File.F, 7));
+            Assert.AreEqual(pb, cb.GetPieceAt(File.G, 7));
+            Assert.AreEqual(pb, cb.GetPieceAt(File.H, 7));
+            Assert.AreEqual(rb, cb.GetPieceAt(File.A, 8));
+            Assert.AreEqual(__, cb.GetPieceAt(File.B, 8));
+            Assert.AreEqual(bb, cb.GetPieceAt(File.C, 8));
+            Assert.AreEqual(qb, cb.GetPieceAt(File.D, 8));
+            Assert.AreEqual(kb, cb.GetPieceAt(File.E, 8));
+            Assert.AreEqual(bb, cb.GetPieceAt(File.F, 8));
+            Assert.AreEqual(nb, cb.GetPieceAt(File.G, 8));
+            Assert.AreEqual(rb, cb.GetPieceAt(File.H, 8));
         }
 
         [Test]
         public static void TestValidMoveWhitePawn()
         {
-            ChessGame cb = new ChessGame();
+            var cb = new ChessGame();
 
-            Move move1 = new Move(new Position(File.A, 2), new Position(File.A, 3), Player.White);
+            var move1 = new Move(new Square(File.A, 2), new Square(File.A, 3), Player.White);
 
-            Assert.True(cb.IsValidMove(move1), "move1 should be valid");
+            Assert.True(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestValidMoveWhitePawn_2Steps()
         {
-            ChessGame cb = new ChessGame();
+            var cb = new ChessGame();
 
-            Move move1 = new Move(new Position(File.D, 2), new Position(File.D, 4), Player.White);
+            var move1 = new Move(new Square(File.D, 2), new Square(File.D, 4), Player.White);
 
-            Assert.True(cb.IsValidMove(move1), "move1 should be valid");
+            Assert.True(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestValidMoveWhitePawn_Capture()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.E, 2), new Position(File.E, 4), Player.White);
-            Move move2 = new Move(new Position(File.D, 7), new Position(File.D, 5), Player.Black);
-            Move move3 = new Move(new Position(File.E, 4), new Position(File.D, 5), Player.White);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.E, 2), new Square(File.E, 4), Player.White);
+            var move2 = new Move(new Square(File.D, 7), new Square(File.D, 5), Player.Black);
+            var move3 = new Move(new Square(File.E, 4), new Square(File.D, 5), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
@@ -306,12 +281,12 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestValidMoveWhitePawn_EnPassant()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.E, 2), new Position(File.E, 4), Player.White);
-            Move move2 = new Move(new Position(File.E, 7), new Position(File.E, 6), Player.Black);
-            Move move3 = new Move(new Position(File.E, 4), new Position(File.E, 5), Player.White);
-            Move move4 = new Move(new Position(File.D, 7), new Position(File.D, 5), Player.Black);
-            Move move5 = new Move(new Position(File.E, 5), new Position(File.D, 6), Player.White);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.E, 2), new Square(File.E, 4), Player.White);
+            var move2 = new Move(new Square(File.E, 7), new Square(File.E, 6), Player.Black);
+            var move3 = new Move(new Square(File.E, 4), new Square(File.E, 5), Player.White);
+            var move4 = new Move(new Square(File.D, 7), new Square(File.D, 5), Player.Black);
+            var move5 = new Move(new Square(File.E, 5), new Square(File.D, 6), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
@@ -324,12 +299,12 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestInvalidMoveWhitePawn_EnPassant()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.E, 2), new Position(File.E, 4), Player.White);
-            Move move2 = new Move(new Position(File.E, 7), new Position(File.E, 6), Player.Black);
-            Move move3 = new Move(new Position(File.E, 4), new Position(File.E, 5), Player.White);
-            Move move4 = new Move(new Position(File.H, 7), new Position(File.H, 5), Player.Black);
-            Move move5 = new Move(new Position(File.E, 5), new Position(File.D, 6), Player.White);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.E, 2), new Square(File.E, 4), Player.White);
+            var move2 = new Move(new Square(File.E, 7), new Square(File.E, 6), Player.Black);
+            var move3 = new Move(new Square(File.E, 4), new Square(File.E, 5), Player.White);
+            var move4 = new Move(new Square(File.H, 7), new Square(File.H, 5), Player.Black);
+            var move5 = new Move(new Square(File.E, 5), new Square(File.D, 6), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
@@ -342,21 +317,21 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestInvalidMoveWhitePawn_EnPassant_NoPawn()
         {
-            Piece[][] board = new Piece[8][]
+            var board = new Piece[8][]
             {
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, rb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, pw, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, rb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, pw, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
             };
-            ChessGame game = new ChessGame(board, Player.Black);
+            var game = new ChessGame(board, Player.Black);
 
-            Move move1 = new Move(new Position(File.E, 7), new Position(File.E, 5), Player.Black);
-            Move move2 = new Move(new Position(File.F, 5), new Position(File.E, 6), Player.White);
+            var move1 = new Move(new Square(File.E, 7), new Square(File.E, 5), Player.Black);
+            var move2 = new Move(new Square(File.F, 5), new Square(File.E, 6), Player.White);
             game.ApplyMove(move1, true);
 
             Assert.False(game.IsValidMove(move2));
@@ -365,10 +340,10 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestInvalidMoveWhitePawn_NoCapture()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.E, 2), new Position(File.E, 4), Player.White);
-            Move move2 = new Move(new Position(File.D, 7), new Position(File.D, 6), Player.Black);
-            Move move3 = new Move(new Position(File.E, 4), new Position(File.D, 5), Player.White);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.E, 2), new Square(File.E, 4), Player.White);
+            var move2 = new Move(new Square(File.D, 7), new Square(File.D, 6), Player.Black);
+            var move3 = new Move(new Square(File.E, 4), new Square(File.D, 5), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
@@ -379,142 +354,141 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestInvalidMoveWhitePawn_2StepsBlockingPiece()
         {
-            Piece[][] board = new Piece[8][]
+            var board = new Piece[8][]
             {
-                new[] { kw, o, kb, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, pb, o, o, o },
-                new[] { o, o, o, o, pw, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
+                new[] { kw, __, kb, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, pb, __, __, __ },
+                new[] { __, __, __, __, pw, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
             };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move = new Move(new Position(File.E, 2), new Position(File.E, 4), Player.White);
+            var cb = new ChessGame(board, Player.White);
+            var move = new Move(new Square(File.E, 2), new Square(File.E, 4), Player.White);
 
-            Assert.False(cb.IsValidMove(move), "move should be invalid");
-
+            Assert.False(cb.IsValidMove(move));
         }
 
         [Test]
         public static void TestInvalidMoveWhitePawn_2StepsNotOnRank2()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.E, 2), new Position(File.E, 3), Player.White);
-            Move move2 = new Move(new Position(File.E, 3), new Position(File.E, 5), Player.White);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.E, 2), new Square(File.E, 3), Player.White);
+            var move2 = new Move(new Square(File.E, 3), new Square(File.E, 5), Player.White);
 
             cb.ApplyMove(move1, true);
 
-            Assert.False(cb.IsValidMove(move2), "move2 should be invalid");
+            Assert.False(cb.IsValidMove(move2));
         }
 
         [Test]
         public static void TestValidMoveWhiteKnight()
         {
-            ChessGame cb = new ChessGame();
+            var cb = new ChessGame();
 
-            Move move1 = new Move(new Position(File.B, 1), new Position(File.C, 3), Player.White);
+            var move1 = new Move(new Square(File.B, 1), new Square(File.C, 3), Player.White);
 
-            Assert.True(cb.IsValidMove(move1), "move1 should be valid");
+            Assert.True(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestValidMoveWhiteBishopC()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.D, 2), new Position(File.D, 3), Player.White);
-            Move move2 = new Move(new Position(File.A, 7), new Position(File.A, 6), Player.Black);
-            Move move3 = new Move(new Position(File.C, 1), new Position(File.F, 4), Player.White);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.D, 2), new Square(File.D, 3), Player.White);
+            var move2 = new Move(new Square(File.A, 7), new Square(File.A, 6), Player.Black);
+            var move3 = new Move(new Square(File.C, 1), new Square(File.F, 4), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
 
-            Assert.True(cb.IsValidMove(move3), "move3 should be valid");
+            Assert.True(cb.IsValidMove(move3));
         }
 
         [Test]
         public static void TestValidMoveWhiteBishopF()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.E, 2), new Position(File.E, 3), Player.White);
-            Move move2 = new Move(new Position(File.A, 7), new Position(File.A, 6), Player.Black);
-            Move move3 = new Move(new Position(File.F, 1), new Position(File.C, 4), Player.White);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.E, 2), new Square(File.E, 3), Player.White);
+            var move2 = new Move(new Square(File.A, 7), new Square(File.A, 6), Player.Black);
+            var move3 = new Move(new Square(File.F, 1), new Square(File.C, 4), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
 
-            Assert.True(cb.IsValidMove(move3), "move3 should be valid");
+            Assert.True(cb.IsValidMove(move3));
         }
 
         [Test]
         public static void TestValidMoveWhiteRookA()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.A, 2), new Position(File.A, 3), Player.White);
-            Move move2 = new Move(new Position(File.A, 7), new Position(File.A, 6), Player.Black);
-            Move move3 = new Move(new Position(File.A, 1), new Position(File.A, 2), Player.White);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.A, 2), new Square(File.A, 3), Player.White);
+            var move2 = new Move(new Square(File.A, 7), new Square(File.A, 6), Player.Black);
+            var move3 = new Move(new Square(File.A, 1), new Square(File.A, 2), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
 
-            Assert.True(cb.IsValidMove(move3), "move3 should be valid");
+            Assert.True(cb.IsValidMove(move3));
         }
 
         [Test]
         public static void TestValidMoveWhiteRookH()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.H, 2), new Position(File.H, 3), Player.White);
-            Move move2 = new Move(new Position(File.A, 7), new Position(File.A, 6), Player.Black);
-            Move move3 = new Move(new Position(File.H, 1), new Position(File.H, 2), Player.White);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.H, 2), new Square(File.H, 3), Player.White);
+            var move2 = new Move(new Square(File.A, 7), new Square(File.A, 6), Player.Black);
+            var move3 = new Move(new Square(File.H, 1), new Square(File.H, 2), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
 
-            Assert.True(cb.IsValidMove(move3), "move3 should be valid");
+            Assert.True(cb.IsValidMove(move3));
         }
 
         [Test]
         public static void TestValidMoveWhiteQueenDiagonal()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.E, 2), new Position(File.E, 3), Player.White);
-            Move move2 = new Move(new Position(File.A, 7), new Position(File.A, 6), Player.Black);
-            Move move3 = new Move(new Position(File.D, 1), new Position(File.H, 5), Player.White);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.E, 2), new Square(File.E, 3), Player.White);
+            var move2 = new Move(new Square(File.A, 7), new Square(File.A, 6), Player.Black);
+            var move3 = new Move(new Square(File.D, 1), new Square(File.H, 5), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
 
-            Assert.True(cb.IsValidMove(move3), "move3 should be valid");
+            Assert.True(cb.IsValidMove(move3));
         }
 
         [Test]
         public static void TestValidMoveWhiteQueenVertical()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.D, 2), new Position(File.D, 3), Player.White);
-            Move move2 = new Move(new Position(File.A, 7), new Position(File.A, 6), Player.Black);
-            Move move3 = new Move(new Position(File.D, 1), new Position(File.D, 2), Player.White);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.D, 2), new Square(File.D, 3), Player.White);
+            var move2 = new Move(new Square(File.A, 7), new Square(File.A, 6), Player.Black);
+            var move3 = new Move(new Square(File.D, 1), new Square(File.D, 2), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
 
-            Assert.True(cb.IsValidMove(move3), "move3 should be valid");
+            Assert.True(cb.IsValidMove(move3));
         }
 
         [Test]
         public static void TestValidMoveWhiteQueenHorizontal()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.B, 1), new Position(File.C, 3), Player.White);
-            Move move2 = new Move(new Position(File.A, 7), new Position(File.A, 6), Player.Black);
-            Move move3 = new Move(new Position(File.D, 2), new Position(File.D, 3), Player.White);
-            Move move4 = new Move(new Position(File.B, 7), new Position(File.B, 6), Player.Black);
-            Move move5 = new Move(new Position(File.C, 1), new Position(File.D, 2), Player.White);
-            Move move6 = new Move(new Position(File.C, 7), new Position(File.C, 6), Player.Black);
-            Move move7 = new Move(new Position(File.D, 1), new Position(File.C, 1), Player.White);
-            Move move8 = new Move(new Position(File.D, 1), new Position(File.B, 1), Player.White);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.B, 1), new Square(File.C, 3), Player.White);
+            var move2 = new Move(new Square(File.A, 7), new Square(File.A, 6), Player.Black);
+            var move3 = new Move(new Square(File.D, 2), new Square(File.D, 3), Player.White);
+            var move4 = new Move(new Square(File.B, 7), new Square(File.B, 6), Player.Black);
+            var move5 = new Move(new Square(File.C, 1), new Square(File.D, 2), Player.White);
+            var move6 = new Move(new Square(File.C, 7), new Square(File.C, 6), Player.Black);
+            var move7 = new Move(new Square(File.D, 1), new Square(File.C, 1), Player.White);
+            var move8 = new Move(new Square(File.D, 1), new Square(File.B, 1), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
@@ -523,446 +497,446 @@ namespace ChessDotNet.Tests
             cb.ApplyMove(move5, true);
             cb.ApplyMove(move6, true);
 
-            Assert.True(cb.IsValidMove(move7), "move7 should be valid");
-            Assert.True(cb.IsValidMove(move8), "move8 should be valid");
+            Assert.True(cb.IsValidMove(move7));
+            Assert.True(cb.IsValidMove(move8));
         }
 
         [Test]
         public static void TestValidMoveWhiteKingDiagonal()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.F, 2), new Position(File.F, 3), Player.White);
-            Move move2 = new Move(new Position(File.A, 7), new Position(File.A, 6), Player.Black);
-            Move move3 = new Move(new Position(File.E, 1), new Position(File.F, 2), Player.White);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.F, 2), new Square(File.F, 3), Player.White);
+            var move2 = new Move(new Square(File.A, 7), new Square(File.A, 6), Player.Black);
+            var move3 = new Move(new Square(File.E, 1), new Square(File.F, 2), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
 
-            Assert.True(cb.IsValidMove(move3), "move3 should be valid");
+            Assert.True(cb.IsValidMove(move3));
         }
 
         [Test]
         public static void TestValidMoveWhiteKingHorizontal()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.D, 2), new Position(File.D, 3), Player.White);
-            Move move2 = new Move(new Position(File.A, 7), new Position(File.A, 6), Player.Black);
-            Move move3 = new Move(new Position(File.D, 1), new Position(File.D, 2), Player.White);
-            Move move4 = new Move(new Position(File.H, 7), new Position(File.H, 6), Player.Black);
-            Move move5 = new Move(new Position(File.E, 1), new Position(File.D, 1), Player.White);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.D, 2), new Square(File.D, 3), Player.White);
+            var move2 = new Move(new Square(File.A, 7), new Square(File.A, 6), Player.Black);
+            var move3 = new Move(new Square(File.D, 1), new Square(File.D, 2), Player.White);
+            var move4 = new Move(new Square(File.H, 7), new Square(File.H, 6), Player.Black);
+            var move5 = new Move(new Square(File.E, 1), new Square(File.D, 1), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
             cb.ApplyMove(move3, true);
             cb.ApplyMove(move4, true);
 
-            Assert.True(cb.IsValidMove(move5), "move5 should be valid");
+            Assert.True(cb.IsValidMove(move5));
         }
 
         [Test]
         public static void TestValidMoveWhiteKingVertical()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.E, 2), new Position(File.E, 3), Player.White);
-            Move move2 = new Move(new Position(File.A, 7), new Position(File.A, 6), Player.Black);
-            Move move3 = new Move(new Position(File.E, 1), new Position(File.E, 2), Player.White);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.E, 2), new Square(File.E, 3), Player.White);
+            var move2 = new Move(new Square(File.A, 7), new Square(File.A, 6), Player.Black);
+            var move3 = new Move(new Square(File.E, 1), new Square(File.E, 2), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
 
-            Assert.True(cb.IsValidMove(move3), "move3 should be valid");
+            Assert.True(cb.IsValidMove(move3));
         }
 
         [Test]
         public static void TestValidMoveWhiteKing_KingsideCastling()
         {
-            Piece[][] board = new Piece[8][]
+            var board = new Piece[8][]
             {
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, rw }
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, rw }
             };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move1 = new Move(new Position(File.E, 1), new Position(File.G, 1), Player.White);
+            var cb = new ChessGame(board, Player.White);
+            var move1 = new Move(new Square(File.E, 1), new Square(File.G, 1), Player.White);
 
-            Assert.True(cb.IsValidMove(move1), "move1 should be valid");
+            Assert.True(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestValidMoveWhiteKing_QueensideCastling()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, kb, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { rw, o, o, o, kw, o, o, rw }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move1 = new Move(new Position(File.E, 1), new Position(File.C, 1), Player.White);
+            var board = new Piece[8][]
+             {
+                new[] { __, __, __, kb, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { rw, __, __, __, kw, __, __, rw }
+             };
+            var cb = new ChessGame(board, Player.White);
+            var move1 = new Move(new Square(File.E, 1), new Square(File.C, 1), Player.White);
 
-            Assert.True(cb.IsValidMove(move1), "move1 should be valid");
+            Assert.True(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveWhiteKing_KingsideCastling_WouldPassThroughCheck()
         {
-            Piece[][] board = new Piece[8][]
+            var board = new Piece[8][]
             {
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, rb, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, rw }
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, rb, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, rw }
             };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move1 = new Move(new Position(File.E, 1), new Position(File.G, 1), Player.White);
+            var cb = new ChessGame(board, Player.White);
+            var move1 = new Move(new Square(File.E, 1), new Square(File.G, 1), Player.White);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveWhiteKing_QueensideCastling_WouldPassThroughCheck()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, rb, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { rw, o, o, o, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move1 = new Move(new Position(File.E, 1), new Position(File.C, 1), Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, rb, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { rw, __, __, __, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var move1 = new Move(new Square(File.E, 1), new Square(File.C, 1), Player.White);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestValidMoveWhiteKing_KingsideCastling_WouldNotPassThroughCheck()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, rb },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { rw, o, o, o, kw, o, o, rw }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move1 = new Move(new Position(File.E, 1), new Position(File.G, 1), Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, rb },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { rw, __, __, __, kw, __, __, rw }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var move1 = new Move(new Square(File.E, 1), new Square(File.G, 1), Player.White);
 
-            Assert.True(cb.IsValidMove(move1), "move1 should be valid");
+            Assert.True(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestValidMoveWhiteKing_QueensideCastling_WouldNotPassThroughCheck()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, rb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { rw, o, o, o, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move1 = new Move(new Position(File.E, 1), new Position(File.C, 1), Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, rb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { rw, __, __, __, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var move1 = new Move(new Square(File.E, 1), new Square(File.C, 1), Player.White);
 
-            Assert.True(cb.IsValidMove(move1), "move1 should be valid");
+            Assert.True(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveWhiteKing_KingsideCastling_BlockingPiece1()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, rw, rw }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move1 = new Move(new Position(File.E, 1), new Position(File.G, 1), Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, rw, rw }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var move1 = new Move(new Square(File.E, 1), new Square(File.G, 1), Player.White);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveWhiteKing_QueensideCastling_BlockingPiece1()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, o, o, o, kb },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { rw, rw, o, o, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move1 = new Move(new Position(File.E, 1), new Position(File.C, 1), Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, __, __, __, kb },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { rw, rw, __, __, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var move1 = new Move(new Square(File.E, 1), new Square(File.C, 1), Player.White);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveWhiteKing_KingsideCastling_BlockingPiece2()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, rw, o, rw }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move1 = new Move(new Position(File.E, 1), new Position(File.G, 1), Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, rw, __, rw }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var move1 = new Move(new Square(File.E, 1), new Square(File.G, 1), Player.White);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveWhiteKing_QueensideCastling_BlockingPiece2()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { rw, o, rw, o, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move1 = new Move(new Position(File.E, 1), new Position(File.C, 1), Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { rw, __, rw, __, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var move1 = new Move(new Square(File.E, 1), new Square(File.C, 1), Player.White);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveWhiteKing_QueensideCastling_BlockingPiece3()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { rw, o, o, rw, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move1 = new Move(new Position(File.E, 1), new Position(File.C, 1), Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { rw, __, __, rw, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var move1 = new Move(new Square(File.E, 1), new Square(File.C, 1), Player.White);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveWhiteKing_KingsideCastling_NoRook()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move1 = new Move(new Position(File.E, 1), new Position(File.G, 1), Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var move1 = new Move(new Square(File.E, 1), new Square(File.G, 1), Player.White);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveWhiteKing_QueensideCastling_NoRook()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move1 = new Move(new Position(File.E, 1), new Position(File.C, 1), Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var move1 = new Move(new Square(File.E, 1), new Square(File.C, 1), Player.White);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveWhiteKing_KingsideCastling_RookMoved()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, rw }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move1 = new Move(new Position(File.H, 1), new Position(File.H, 2), Player.White);
-            Move move2 = new Move(new Position(File.B, 8), new Position(File.B, 7), Player.Black);
-            Move move3 = new Move(new Position(File.E, 1), new Position(File.G, 1), Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, rw }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var move1 = new Move(new Square(File.H, 1), new Square(File.H, 2), Player.White);
+            var move2 = new Move(new Square(File.B, 8), new Square(File.B, 7), Player.Black);
+            var move3 = new Move(new Square(File.E, 1), new Square(File.G, 1), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
 
-            Assert.False(cb.IsValidMove(move3), "move3 should be invalid");
+            Assert.False(cb.IsValidMove(move3));
         }
 
         [Test]
         public static void TestInvalidMoveWhiteKing_QueensideCastling_RookMoved()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { rw, o, o, o, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move1 = new Move(new Position(File.A, 1), new Position(File.A, 2), Player.White);
-            Move move2 = new Move(new Position(File.B, 8), new Position(File.B, 7), Player.Black);
-            Move move3 = new Move(new Position(File.E, 1), new Position(File.C, 1), Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { rw, __, __, __, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var move1 = new Move(new Square(File.A, 1), new Square(File.A, 2), Player.White);
+            var move2 = new Move(new Square(File.B, 8), new Square(File.B, 7), Player.Black);
+            var move3 = new Move(new Square(File.E, 1), new Square(File.C, 1), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
 
-            Assert.False(cb.IsValidMove(move3), "move3 should be invalid");
+            Assert.False(cb.IsValidMove(move3));
         }
 
         [Test]
         public static void TestInvalidMoveWhiteKing_KingsideCastling_KingMoved()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, rw }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move1 = new Move(new Position(File.E, 1), new Position(File.D, 1), Player.White);
-            Move move2 = new Move(new Position(File.B, 8), new Position(File.B, 7), Player.Black);
-            Move move3 = new Move(new Position(File.D, 1), new Position(File.F, 1), Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, rw }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var move1 = new Move(new Square(File.E, 1), new Square(File.D, 1), Player.White);
+            var move2 = new Move(new Square(File.B, 8), new Square(File.B, 7), Player.Black);
+            var move3 = new Move(new Square(File.D, 1), new Square(File.F, 1), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
 
-            Assert.False(cb.IsValidMove(move3), "move3 should be invalid");
+            Assert.False(cb.IsValidMove(move3));
         }
 
         [Test]
         public static void TestInvalidMoveWhiteKing_QueensideCastling_KingMoved()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { rw, o, o, o, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move1 = new Move(new Position(File.E, 1), new Position(File.D, 1), Player.White);
-            Move move2 = new Move(new Position(File.B, 8), new Position(File.B, 7), Player.Black);
-            Move move3 = new Move(new Position(File.D, 1), new Position(File.B, 1), Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { rw, __, __, __, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var move1 = new Move(new Square(File.E, 1), new Square(File.D, 1), Player.White);
+            var move2 = new Move(new Square(File.B, 8), new Square(File.B, 7), Player.Black);
+            var move3 = new Move(new Square(File.D, 1), new Square(File.B, 1), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
 
-            Assert.False(cb.IsValidMove(move3), "move3 should be invalid");
+            Assert.False(cb.IsValidMove(move3));
         }
 
         [Test]
         public static void TestValidMoveBlackPawn()
         {
-            ChessGame cb = new ChessGame();
-            cb.ApplyMove(new Move(new Position(File.A, 2), new Position(File.A, 3), Player.White), true);
+            var cb = new ChessGame();
+            cb.ApplyMove(new Move(new Square(File.A, 2), new Square(File.A, 3), Player.White), true);
 
-            Move move1 = new Move(new Position(File.A, 7), new Position(File.A, 6), Player.Black);
+            var move1 = new Move(new Square(File.A, 7), new Square(File.A, 6), Player.Black);
 
-            Assert.True(cb.IsValidMove(move1), "move1 should be valid");
+            Assert.True(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestValidMoveBlackPawn_2Steps()
         {
-            ChessGame cb = new ChessGame();
-            cb.ApplyMove(new Move(new Position(File.A, 2), new Position(File.A, 3), Player.White), true);
+            var cb = new ChessGame();
+            cb.ApplyMove(new Move(new Square(File.A, 2), new Square(File.A, 3), Player.White), true);
 
-            Move move1 = new Move(new Position(File.D, 7), new Position(File.D, 5), Player.Black);
+            var move1 = new Move(new Square(File.D, 7), new Square(File.D, 5), Player.Black);
 
-            Assert.True(cb.IsValidMove(move1), "move1 should be valid");
+            Assert.True(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestValidMoveBlackPawn_Capture()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.A, 2), new Position(File.A, 3), Player.White);
-            Move move2 = new Move(new Position(File.E, 7), new Position(File.E, 5), Player.Black);
-            Move move3 = new Move(new Position(File.D, 2), new Position(File.D, 4), Player.White);
-            Move move4 = new Move(new Position(File.E, 5), new Position(File.D, 4), Player.Black);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.A, 2), new Square(File.A, 3), Player.White);
+            var move2 = new Move(new Square(File.E, 7), new Square(File.E, 5), Player.Black);
+            var move3 = new Move(new Square(File.D, 2), new Square(File.D, 4), Player.White);
+            var move4 = new Move(new Square(File.E, 5), new Square(File.D, 4), Player.Black);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
@@ -974,13 +948,13 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestValidMoveBlackPawn_EnPassant()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.B, 1), new Position(File.A, 3), Player.White);
-            Move move2 = new Move(new Position(File.E, 7), new Position(File.E, 5), Player.Black);
-            Move move3 = new Move(new Position(File.E, 2), new Position(File.E, 3), Player.White);
-            Move move4 = new Move(new Position(File.E, 5), new Position(File.E, 4), Player.Black);
-            Move move5 = new Move(new Position(File.D, 2), new Position(File.D, 4), Player.White);
-            Move move6 = new Move(new Position(File.E, 4), new Position(File.D, 3), Player.Black);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.B, 1), new Square(File.A, 3), Player.White);
+            var move2 = new Move(new Square(File.E, 7), new Square(File.E, 5), Player.Black);
+            var move3 = new Move(new Square(File.E, 2), new Square(File.E, 3), Player.White);
+            var move4 = new Move(new Square(File.E, 5), new Square(File.E, 4), Player.Black);
+            var move5 = new Move(new Square(File.D, 2), new Square(File.D, 4), Player.White);
+            var move6 = new Move(new Square(File.E, 4), new Square(File.D, 3), Player.Black);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
@@ -994,13 +968,13 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestInvalidMoveBlackPawn_EnPassant()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.B, 1), new Position(File.A, 3), Player.White);
-            Move move2 = new Move(new Position(File.E, 7), new Position(File.E, 5), Player.Black);
-            Move move3 = new Move(new Position(File.E, 2), new Position(File.E, 3), Player.White);
-            Move move4 = new Move(new Position(File.E, 5), new Position(File.E, 4), Player.Black);
-            Move move5 = new Move(new Position(File.H, 2), new Position(File.H, 4), Player.White);
-            Move move6 = new Move(new Position(File.E, 4), new Position(File.D, 3), Player.Black);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.B, 1), new Square(File.A, 3), Player.White);
+            var move2 = new Move(new Square(File.E, 7), new Square(File.E, 5), Player.Black);
+            var move3 = new Move(new Square(File.E, 2), new Square(File.E, 3), Player.White);
+            var move4 = new Move(new Square(File.E, 5), new Square(File.E, 4), Player.Black);
+            var move5 = new Move(new Square(File.H, 2), new Square(File.H, 4), Player.White);
+            var move6 = new Move(new Square(File.E, 4), new Square(File.D, 3), Player.Black);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
@@ -1014,11 +988,11 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestInvalidMoveBlackPawn_NoCapture()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.A, 2), new Position(File.A, 3), Player.White);
-            Move move2 = new Move(new Position(File.E, 7), new Position(File.E, 5), Player.Black);
-            Move move3 = new Move(new Position(File.D, 2), new Position(File.D, 3), Player.White);
-            Move move4 = new Move(new Position(File.E, 5), new Position(File.D, 4), Player.Black);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.A, 2), new Square(File.A, 3), Player.White);
+            var move2 = new Move(new Square(File.E, 7), new Square(File.E, 5), Player.Black);
+            var move3 = new Move(new Square(File.D, 2), new Square(File.D, 3), Player.White);
+            var move4 = new Move(new Square(File.E, 5), new Square(File.D, 4), Player.Black);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
@@ -1030,128 +1004,127 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestInvalidMoveBlackPawn_2StepsBlockingPiece()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, pb, o, o, o },
-                new[] { o, o, o, o, pw, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { kw, o, kb, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move = new Move(new Position(File.E, 7), new Position(File.E, 5), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, pb, __, __, __ },
+                new[] { __, __, __, __, pw, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { kw, __, kb, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move = new Move(new Square(File.E, 7), new Square(File.E, 5), Player.Black);
 
-            Assert.False(cb.IsValidMove(move), "move should be invalid");
-
+            Assert.False(cb.IsValidMove(move));
         }
 
         [Test]
         public static void TestInvalidMoveBlackPawn_2StepsNotOnRank7()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.A, 2), new Position(File.A, 3), Player.White);
-            Move move2 = new Move(new Position(File.E, 7), new Position(File.E, 6), Player.Black);
-            Move move3 = new Move(new Position(File.H, 2), new Position(File.H, 3), Player.White);
-            Move move4 = new Move(new Position(File.E, 6), new Position(File.E, 4), Player.Black);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.A, 2), new Square(File.A, 3), Player.White);
+            var move2 = new Move(new Square(File.E, 7), new Square(File.E, 6), Player.Black);
+            var move3 = new Move(new Square(File.H, 2), new Square(File.H, 3), Player.White);
+            var move4 = new Move(new Square(File.E, 6), new Square(File.E, 4), Player.Black);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
             cb.ApplyMove(move3, true);
 
-            Assert.False(cb.IsValidMove(move4), "move4 should be invalid");
+            Assert.False(cb.IsValidMove(move4));
         }
 
         [Test]
         public static void TestValidMoveBlackKnight()
         {
-            ChessGame cb = new ChessGame();
-            cb.ApplyMove(new Move(new Position(File.A, 2), new Position(File.A, 3), Player.White), true);
+            var cb = new ChessGame();
+            cb.ApplyMove(new Move(new Square(File.A, 2), new Square(File.A, 3), Player.White), true);
 
-            Move move1 = new Move(new Position(File.B, 8), new Position(File.C, 6), Player.Black);
+            var move1 = new Move(new Square(File.B, 8), new Square(File.C, 6), Player.Black);
 
-            Assert.True(cb.IsValidMove(move1), "move1 should be valid");
+            Assert.True(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestValidMoveBlackBishopC()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.A, 2), new Position(File.A, 3), Player.White);
-            Move move2 = new Move(new Position(File.D, 7), new Position(File.D, 6), Player.Black);
-            Move move3 = new Move(new Position(File.H, 2), new Position(File.H, 3), Player.White);
-            Move move4 = new Move(new Position(File.C, 8), new Position(File.F, 5), Player.Black);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.A, 2), new Square(File.A, 3), Player.White);
+            var move2 = new Move(new Square(File.D, 7), new Square(File.D, 6), Player.Black);
+            var move3 = new Move(new Square(File.H, 2), new Square(File.H, 3), Player.White);
+            var move4 = new Move(new Square(File.C, 8), new Square(File.F, 5), Player.Black);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
             cb.ApplyMove(move3, true);
 
-            Assert.True(cb.IsValidMove(move4), "move4 should be valid");
+            Assert.True(cb.IsValidMove(move4));
         }
 
         [Test]
         public static void TestValidMoveBlackBishopF()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.A, 2), new Position(File.A, 3), Player.White);
-            Move move2 = new Move(new Position(File.E, 7), new Position(File.E, 6), Player.Black);
-            Move move3 = new Move(new Position(File.H, 2), new Position(File.H, 3), Player.White);
-            Move move4 = new Move(new Position(File.F, 8), new Position(File.C, 5), Player.Black);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.A, 2), new Square(File.A, 3), Player.White);
+            var move2 = new Move(new Square(File.E, 7), new Square(File.E, 6), Player.Black);
+            var move3 = new Move(new Square(File.H, 2), new Square(File.H, 3), Player.White);
+            var move4 = new Move(new Square(File.F, 8), new Square(File.C, 5), Player.Black);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
             cb.ApplyMove(move3, true);
 
-            Assert.True(cb.IsValidMove(move4), "move4 should be valid");
+            Assert.True(cb.IsValidMove(move4));
         }
 
         [Test]
         public static void TestValidMoveBlackQueenDiagonal()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.A, 2), new Position(File.A, 3), Player.White);
-            Move move2 = new Move(new Position(File.E, 7), new Position(File.E, 6), Player.Black);
-            Move move3 = new Move(new Position(File.H, 2), new Position(File.H, 3), Player.White);
-            Move move4 = new Move(new Position(File.D, 8), new Position(File.H, 4), Player.Black);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.A, 2), new Square(File.A, 3), Player.White);
+            var move2 = new Move(new Square(File.E, 7), new Square(File.E, 6), Player.Black);
+            var move3 = new Move(new Square(File.H, 2), new Square(File.H, 3), Player.White);
+            var move4 = new Move(new Square(File.D, 8), new Square(File.H, 4), Player.Black);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
             cb.ApplyMove(move3, true);
 
-            Assert.True(cb.IsValidMove(move4), "move4 should be valid");
+            Assert.True(cb.IsValidMove(move4));
         }
 
         [Test]
         public static void TestValidMoveBlackQueenVertical()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.A, 2), new Position(File.A, 3), Player.White);
-            Move move2 = new Move(new Position(File.D, 7), new Position(File.D, 6), Player.Black);
-            Move move3 = new Move(new Position(File.H, 2), new Position(File.H, 3), Player.White);
-            Move move4 = new Move(new Position(File.D, 8), new Position(File.D, 7), Player.Black);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.A, 2), new Square(File.A, 3), Player.White);
+            var move2 = new Move(new Square(File.D, 7), new Square(File.D, 6), Player.Black);
+            var move3 = new Move(new Square(File.H, 2), new Square(File.H, 3), Player.White);
+            var move4 = new Move(new Square(File.D, 8), new Square(File.D, 7), Player.Black);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
             cb.ApplyMove(move3, true);
 
-            Assert.True(cb.IsValidMove(move4), "move4 should be valid");
+            Assert.True(cb.IsValidMove(move4));
         }
 
         [Test]
         public static void TestValidMoveBlackQueenHorizontal()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.A, 2), new Position(File.A, 3), Player.White);
-            Move move2 = new Move(new Position(File.B, 8), new Position(File.C, 6), Player.Black);
-            Move move3 = new Move(new Position(File.B, 2), new Position(File.B, 3), Player.White);
-            Move move4 = new Move(new Position(File.D, 7), new Position(File.D, 6), Player.Black);
-            Move move5 = new Move(new Position(File.C, 2), new Position(File.C, 3), Player.White);
-            Move move6 = new Move(new Position(File.C, 8), new Position(File.D, 7), Player.Black);
-            Move move7 = new Move(new Position(File.D, 2), new Position(File.D, 3), Player.White);
-            Move move8 = new Move(new Position(File.D, 8), new Position(File.C, 8), Player.Black);
-            Move move9 = new Move(new Position(File.D, 8), new Position(File.B, 8), Player.Black);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.A, 2), new Square(File.A, 3), Player.White);
+            var move2 = new Move(new Square(File.B, 8), new Square(File.C, 6), Player.Black);
+            var move3 = new Move(new Square(File.B, 2), new Square(File.B, 3), Player.White);
+            var move4 = new Move(new Square(File.D, 7), new Square(File.D, 6), Player.Black);
+            var move5 = new Move(new Square(File.C, 2), new Square(File.C, 3), Player.White);
+            var move6 = new Move(new Square(File.C, 8), new Square(File.D, 7), Player.Black);
+            var move7 = new Move(new Square(File.D, 2), new Square(File.D, 3), Player.White);
+            var move8 = new Move(new Square(File.D, 8), new Square(File.C, 8), Player.Black);
+            var move9 = new Move(new Square(File.D, 8), new Square(File.B, 8), Player.Black);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
@@ -1161,36 +1134,36 @@ namespace ChessDotNet.Tests
             cb.ApplyMove(move6, true);
             cb.ApplyMove(move7, true);
 
-            Assert.True(cb.IsValidMove(move8), "move8 should be valid");
-            Assert.True(cb.IsValidMove(move9), "move9 should be valid");
+            Assert.True(cb.IsValidMove(move8));
+            Assert.True(cb.IsValidMove(move9));
         }
 
         [Test]
         public static void TestValidMoveBlackKingDiagonal()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.A, 2), new Position(File.A, 3), Player.White);
-            Move move2 = new Move(new Position(File.F, 7), new Position(File.F, 6), Player.Black);
-            Move move3 = new Move(new Position(File.H, 2), new Position(File.H, 3), Player.White);
-            Move move4 = new Move(new Position(File.E, 8), new Position(File.F, 7), Player.Black);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.A, 2), new Square(File.A, 3), Player.White);
+            var move2 = new Move(new Square(File.F, 7), new Square(File.F, 6), Player.Black);
+            var move3 = new Move(new Square(File.H, 2), new Square(File.H, 3), Player.White);
+            var move4 = new Move(new Square(File.E, 8), new Square(File.F, 7), Player.Black);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
             cb.ApplyMove(move3, true);
 
-            Assert.True(cb.IsValidMove(move4), "move4 should be valid");
+            Assert.True(cb.IsValidMove(move4));
         }
 
         [Test]
         public static void TestValidMoveBlackKingHorizontal()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.A, 2), new Position(File.A, 3), Player.White);
-            Move move2 = new Move(new Position(File.D, 7), new Position(File.D, 6), Player.Black);
-            Move move3 = new Move(new Position(File.H, 2), new Position(File.H, 3), Player.White);
-            Move move4 = new Move(new Position(File.D, 8), new Position(File.D, 7), Player.Black);
-            Move move5 = new Move(new Position(File.B, 2), new Position(File.B, 3), Player.White);
-            Move move6 = new Move(new Position(File.E, 8), new Position(File.D, 8), Player.Black);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.A, 2), new Square(File.A, 3), Player.White);
+            var move2 = new Move(new Square(File.D, 7), new Square(File.D, 6), Player.Black);
+            var move3 = new Move(new Square(File.H, 2), new Square(File.H, 3), Player.White);
+            var move4 = new Move(new Square(File.D, 8), new Square(File.D, 7), Player.Black);
+            var move5 = new Move(new Square(File.B, 2), new Square(File.B, 3), Player.White);
+            var move6 = new Move(new Square(File.E, 8), new Square(File.D, 8), Player.Black);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
@@ -1198,401 +1171,401 @@ namespace ChessDotNet.Tests
             cb.ApplyMove(move4, true);
             cb.ApplyMove(move5, true);
 
-            Assert.True(cb.IsValidMove(move6), "move6 should be valid");
+            Assert.True(cb.IsValidMove(move6));
         }
 
         [Test]
         public static void TestValidMoveBlackKingVertical()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.A, 2), new Position(File.A, 3), Player.White);
-            Move move2 = new Move(new Position(File.E, 7), new Position(File.E, 6), Player.Black);
-            Move move3 = new Move(new Position(File.H, 2), new Position(File.H, 3), Player.White);
-            Move move4 = new Move(new Position(File.E, 8), new Position(File.E, 7), Player.Black);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.A, 2), new Square(File.A, 3), Player.White);
+            var move2 = new Move(new Square(File.E, 7), new Square(File.E, 6), Player.Black);
+            var move3 = new Move(new Square(File.H, 2), new Square(File.H, 3), Player.White);
+            var move4 = new Move(new Square(File.E, 8), new Square(File.E, 7), Player.Black);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
             cb.ApplyMove(move3, true);
 
-            Assert.True(cb.IsValidMove(move4), "move4 should be valid");
+            Assert.True(cb.IsValidMove(move4));
         }
 
         [Test]
         public static void TestValidMoveBlackKing_KingsideCastling()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, kb, o, o, rb },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move1 = new Move(new Position(File.E, 8), new Position(File.G, 8), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, kb, __, __, rb },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move1 = new Move(new Square(File.E, 8), new Square(File.G, 8), Player.Black);
 
-            Assert.True(cb.IsValidMove(move1), "move1 should be valid");
+            Assert.True(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestValidMoveBlackKing_QueensideCastling()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { rb, o, o, o, kb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move1 = new Move(new Position(File.E, 8), new Position(File.C, 8), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { rb, __, __, __, kb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move1 = new Move(new Square(File.E, 8), new Square(File.C, 8), Player.Black);
 
-            Assert.True(cb.IsValidMove(move1), "move1 should be valid");
+            Assert.True(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveBlackKing_KingsideCastling_WouldPassThroughCheck()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, kb, o, o, rb },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, rw, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move1 = new Move(new Position(File.E, 8), new Position(File.G, 8), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, kb, __, __, rb },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, rw, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move1 = new Move(new Square(File.E, 8), new Square(File.G, 8), Player.Black);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveBlackKing_QueensideCastling_WouldPassThroughCheck()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { rb, o, o, o, kb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, rw, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move1 = new Move(new Position(File.E, 8), new Position(File.C, 8), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { rb, __, __, __, kb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, rw, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move1 = new Move(new Square(File.E, 8), new Square(File.C, 8), Player.Black);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestValidMoveBlackKing_KingsideCastling_WouldNotPassThroughCheck()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, kb, o, o, rb },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, rw }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move1 = new Move(new Position(File.E, 8), new Position(File.G, 8), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, kb, __, __, rb },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, rw }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move1 = new Move(new Square(File.E, 8), new Square(File.G, 8), Player.Black);
 
-            Assert.True(cb.IsValidMove(move1), "move1 should be valid");
+            Assert.True(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestValidMoveBlackKing_QueensideCastling_WouldNotPassThroughCheck()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { rb, o, o, o, kb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, rw, o, o, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move1 = new Move(new Position(File.E, 8), new Position(File.C, 8), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { rb, __, __, __, kb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, rw, __, __, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move1 = new Move(new Square(File.E, 8), new Square(File.C, 8), Player.Black);
 
-            Assert.True(cb.IsValidMove(move1), "move1 should be valid");
+            Assert.True(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveBlackKing_KingsideCastling_BlockingPiece1()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, kb, o, rb, rb },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, o}
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move1 = new Move(new Position(File.E, 8), new Position(File.G, 8), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, kb, __, rb, rb },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, __}
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move1 = new Move(new Square(File.E, 8), new Square(File.G, 8), Player.Black);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveBlackKing_QueensideCastling_BlockingPiece1()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { rb, rb, o, o, kb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move1 = new Move(new Position(File.E, 8), new Position(File.C, 8), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { rb, rb, __, __, kb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move1 = new Move(new Square(File.E, 8), new Square(File.C, 8), Player.Black);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveBlackKing_KingsideCastling_BlockingPiece2()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, kb, rb, o, rb },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move1 = new Move(new Position(File.E, 8), new Position(File.G, 8), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, kb, rb, __, rb },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move1 = new Move(new Square(File.E, 8), new Square(File.G, 8), Player.Black);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveBlackKing_QueensideCastling_BlockingPiece2()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { rb, o, rb, o, kb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move1 = new Move(new Position(File.E, 8), new Position(File.C, 8), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { rb, __, rb, __, kb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move1 = new Move(new Square(File.E, 8), new Square(File.C, 8), Player.Black);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveBlackKing_QueensideCastling_BlockingPiece3()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { rb, o, o, rb, kb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move1 = new Move(new Position(File.E, 8), new Position(File.C, 8), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { rb, __, __, rb, kb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move1 = new Move(new Square(File.E, 8), new Square(File.C, 8), Player.Black);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveBlackKing_KingsideCastling_NoRook()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, kb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move1 = new Move(new Position(File.E, 8), new Position(File.G, 8), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, kb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move1 = new Move(new Square(File.E, 8), new Square(File.G, 8), Player.Black);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveBlackKing_QueensideCastling_NoRook()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, kb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move1 = new Move(new Position(File.E, 8), new Position(File.C, 8), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, kb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move1 = new Move(new Square(File.E, 8), new Square(File.C, 8), Player.Black);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
         }
 
         [Test]
         public static void TestInvalidMoveBlackKing_KingsideCastling_RookMoved()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, kb, o, o, rb },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, kw, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move1 = new Move(new Position(File.H, 8), new Position(File.H, 7), Player.Black);
-            Move move2 = new Move(new Position(File.B, 1), new Position(File.B, 2), Player.White);
-            Move move3 = new Move(new Position(File.E, 8), new Position(File.G, 8), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, kb, __, __, rb },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, kw, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move1 = new Move(new Square(File.H, 8), new Square(File.H, 7), Player.Black);
+            var move2 = new Move(new Square(File.B, 1), new Square(File.B, 2), Player.White);
+            var move3 = new Move(new Square(File.E, 8), new Square(File.G, 8), Player.Black);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
 
-            Assert.False(cb.IsValidMove(move3), "move3 should be invalid");
+            Assert.False(cb.IsValidMove(move3));
         }
 
         [Test]
         public static void TestInvalidMoveBlackKing_QueensideCastling_RookMoved()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { rb, o, o, o, kb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, kw, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move1 = new Move(new Position(File.A, 8), new Position(File.A, 7), Player.Black);
-            Move move2 = new Move(new Position(File.B, 1), new Position(File.B, 2), Player.White);
-            Move move3 = new Move(new Position(File.E, 8), new Position(File.C, 8), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { rb, __, __, __, kb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, kw, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move1 = new Move(new Square(File.A, 8), new Square(File.A, 7), Player.Black);
+            var move2 = new Move(new Square(File.B, 1), new Square(File.B, 2), Player.White);
+            var move3 = new Move(new Square(File.E, 8), new Square(File.C, 8), Player.Black);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
 
-            Assert.False(cb.IsValidMove(move3), "move3 should be invalid");
+            Assert.False(cb.IsValidMove(move3));
         }
 
         [Test]
         public static void TestInvalidMoveBlackKing_KingsideCastling_KingMoved()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, kb, o, o, rb },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, kw, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move1 = new Move(new Position(File.E, 8), new Position(File.D, 8), Player.Black);
-            Move move2 = new Move(new Position(File.B, 1), new Position(File.B, 2), Player.White);
-            Move move3 = new Move(new Position(File.D, 8), new Position(File.F, 8), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, kb, __, __, rb },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, kw, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move1 = new Move(new Square(File.E, 8), new Square(File.D, 8), Player.Black);
+            var move2 = new Move(new Square(File.B, 1), new Square(File.B, 2), Player.White);
+            var move3 = new Move(new Square(File.D, 8), new Square(File.F, 8), Player.Black);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
 
-            Assert.False(cb.IsValidMove(move3), "move3 should be invalid");
+            Assert.False(cb.IsValidMove(move3));
         }
 
         [Test]
         public static void TestInvalidMoveBlackKing_QueensideCastling_KingMoved()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { rb, o, o, o, kb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, kw, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move1 = new Move(new Position(File.E, 8), new Position(File.D, 8), Player.Black);
-            Move move2 = new Move(new Position(File.B, 1), new Position(File.B, 2), Player.White);
-            Move move3 = new Move(new Position(File.D, 8), new Position(File.B, 8), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { rb, __, __, __, kb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, kw, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move1 = new Move(new Square(File.E, 8), new Square(File.D, 8), Player.Black);
+            var move2 = new Move(new Square(File.B, 1), new Square(File.B, 2), Player.White);
+            var move3 = new Move(new Square(File.D, 8), new Square(File.B, 8), Player.Black);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
 
-            Assert.False(cb.IsValidMove(move3), "move3 should be invalid");
+            Assert.False(cb.IsValidMove(move3));
         }
 
         [Test]
         public static void TestInvalidMoveWhite_WouldBeInCheck()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { kw, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, qb },
-                new[] { pw, o, o, pb, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move = new Move(new Position(File.A, 8), new Position(File.A, 7), Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { kw, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, qb },
+                new[] { pw, __, __, pb, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var move = new Move(new Square(File.A, 8), new Square(File.A, 7), Player.White);
 
             Assert.False(cb.IsValidMove(move));
         }
@@ -1600,20 +1573,20 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestInvalidMoveWhite_WouldBeCheckmated()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, rb },
-                new[] { o, o, o, kw, nb, o, rb, o }
-            };
+            var board = new Piece[8][]
+                {
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, rb },
+                new[] { __, __, __, kw, nb, __, rb, __ }
+                };
 
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move = new Move(new Position(File.D, 1), new Position(File.E, 1), Player.White);
+            var cb = new ChessGame(board, Player.White);
+            var move = new Move(new Square(File.D, 1), new Square(File.E, 1), Player.White);
 
             Assert.False(cb.IsValidMove(move));
         }
@@ -1621,19 +1594,19 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestInvalidMoveWhiteRook_NoPassThrough()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { rw, o, o, o, pw, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, kw, o, kb, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            Move move = new Move(new Position(File.A, 7), new Position(File.G, 7), Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { rw, __, __, __, pw, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, kw, __, kb, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var move = new Move(new Square(File.A, 7), new Square(File.G, 7), Player.White);
 
             Assert.False(cb.IsValidMove(move));
         }
@@ -1641,70 +1614,74 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestInvalidMoveBlackKing_NoAdjacentKings()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, kb, o, kw, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Move move1 = new Move(new Position(File.D, 6), new Position(File.E, 6), Player.Black);
-            Move move2 = new Move(new Position(File.D, 6), new Position(File.E, 7), Player.Black);
-            Move move3 = new Move(new Position(File.D, 6), new Position(File.E, 5), Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, kb, __, kw, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            var move1 = new Move(new Square(File.D, 6), new Square(File.E, 6), Player.Black);
+            var move2 = new Move(new Square(File.D, 6), new Square(File.E, 7), Player.Black);
+            var move3 = new Move(new Square(File.D, 6), new Square(File.E, 5), Player.Black);
 
-            Assert.False(cb.IsValidMove(move1), "move1 should be invalid");
-            Assert.False(cb.IsValidMove(move2), "move2 should be invalid");
-            Assert.False(cb.IsValidMove(move3), "move3 should be invalid");
+            Assert.False(cb.IsValidMove(move1));
+            Assert.False(cb.IsValidMove(move2));
+            Assert.False(cb.IsValidMove(move3));
         }
 
         [Test]
         public static void TestApplyMoveWhitePawn()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.E, 2), new Position(File.E, 3), Player.White);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.E, 2), new Square(File.E, 3), Player.White);
             Assert.AreNotEqual(cb.ApplyMove(move1, false), MoveType.Invalid);
-            Piece[][] expected = new Piece[8][]
-            {
+            var expected = new Piece[8][]
+                {
                 new[] { rb, nb, bb, qb, kb, bb, nb, rb },
                 new[] { pb, pb, pb, pb, pb, pb, pb, pb },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, pw, o, o, o },
-                new[] { pw, pw, pw, pw, o, pw, pw, pw },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, pw, __, __, __ },
+                new[] { pw, pw, pw, pw, __, pw, pw, pw },
                 new[] { rw, nw, bw, qw, kw, bw, nw, rw }
-            };
-            Assert.AreEqual(expected, cb.GetBoard(), "Unexpected board layout after applying move1");
-            Move move2 = new Move(new Position(File.E, 3), new Position(File.E, 4), Player.White);
+                };
+            Assert.AreEqual(expected, cb.GetBoard());
+
+            var move2 = new Move(new Square(File.E, 3), new Square(File.E, 4), Player.White);
+
             Assert.AreNotEqual(cb.ApplyMove(move2, true), MoveType.Invalid);
+
             expected = new Piece[8][]
             {
                 new[] { rb, nb, bb, qb, kb, bb, nb, rb },
                 new[] { pb, pb, pb, pb, pb, pb, pb, pb },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, pw, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { pw, pw, pw, pw, o, pw, pw, pw },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, pw, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { pw, pw, pw, pw, __, pw, pw, pw },
                 new[] { rw, nw, bw, qw, kw, bw, nw, rw }
             };
-            Assert.AreEqual(expected, cb.GetBoard(), "Unexpected board layout after applying move2");
+
+            Assert.AreEqual(expected, cb.GetBoard());
         }
 
         [Test]
         public static void TestApplyMoveWhitePawn_EnPassant()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.E, 2), new Position(File.E, 4), Player.White);
-            Move move2 = new Move(new Position(File.E, 7), new Position(File.E, 6), Player.Black);
-            Move move3 = new Move(new Position(File.E, 4), new Position(File.E, 5), Player.White);
-            Move move4 = new Move(new Position(File.D, 7), new Position(File.D, 5), Player.Black);
-            Move move5 = new Move(new Position(File.E, 5), new Position(File.D, 6), Player.White);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.E, 2), new Square(File.E, 4), Player.White);
+            var move2 = new Move(new Square(File.E, 7), new Square(File.E, 6), Player.Black);
+            var move3 = new Move(new Square(File.E, 4), new Square(File.E, 5), Player.White);
+            var move4 = new Move(new Square(File.D, 7), new Square(File.D, 5), Player.Black);
+            var move5 = new Move(new Square(File.E, 5), new Square(File.D, 6), Player.White);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
@@ -1712,133 +1689,135 @@ namespace ChessDotNet.Tests
             cb.ApplyMove(move4, true);
             cb.ApplyMove(move5, true);
 
-            Piece[][] board = new Piece[8][]
-            {
+            var board = new Piece[8][]
+                {
                 new[] { rb, nb, bb, qb, kb, bb, nb, rb },
-                new[] { pb, pb, pb, o, o, pb, pb, pb },
-                new[] { o, o, o, pw, pb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { pw, pw, pw, pw, o, pw, pw, pw },
+                new[] { pb, pb, pb, __, __, pb, pb, pb },
+                new[] { __, __, __, pw, pb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { pw, pw, pw, pw, __, pw, pw, pw },
                 new[] { rw, nw, bw, qw, kw, bw, nw, rw }
-            };
+                };
 
-            Assert.AreEqual(board, cb.GetBoard(), "Unexpected board layout after en passant capture.");
+            Assert.AreEqual(board, cb.GetBoard());
         }
 
         [Test]
         public static void TestApplyMoveWhitePawn_PromotionToQueen()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { pw, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, kw, o, kb, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            Move move = new Move(new Position(File.A, 7), new Position(File.A, 8), Player.White, new Queen(Player.White));
-            ChessGame cb = new ChessGame(board, Player.White);
-            Assert.AreNotEqual(cb.ApplyMove(move, false), MoveType.Invalid, "move should be valid");
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { pw, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, kw, __, kb, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var move = new Move(new Square(File.A, 7), new Square(File.A, 8), Player.White, new Queen(Player.White));
+            var cb = new ChessGame(board, Player.White);
 
-            Piece[][] expected = new Piece[8][]
-            {
-                new[] { qw, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, kw, o, kb, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
+            Assert.AreNotEqual(cb.ApplyMove(move, false), MoveType.Invalid);
+
+            var expected = new Piece[8][]
+                {
+                new[] { qw, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, kw, __, kb, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
             Assert.AreEqual(expected, cb.GetBoard());
         }
 
         [Test]
         public static void TestApplyMoveBlackPawn_PromotionToQueen()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, kw, o, kb, pb, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            Move move = new Move(new Position(File.G, 2), new Position(File.G, 1), Player.Black, new Queen(Player.Black));
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Assert.AreNotEqual(cb.ApplyMove(move, false), MoveType.Invalid, "move should be valid");
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, kw, __, kb, pb, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var move = new Move(new Square(File.G, 2), new Square(File.G, 1), Player.Black, new Queen(Player.Black));
+            var cb = new ChessGame(board, Player.Black);
+            Assert.AreNotEqual(cb.ApplyMove(move, false), MoveType.Invalid);
 
-            Piece[][] expected = new Piece[8][]
-            {
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, kw, o, kb, o, o },
-                new[] { o, o, o, o, o, o, qb, o }
-            };
+            var expected = new Piece[8][]
+                {
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, kw, __, kb, __, __ },
+                new[] { __, __, __, __, __, __, qb, __ }
+                };
             Assert.AreEqual(expected, cb.GetBoard());
         }
 
         [Test]
         public static void TestInvalidMoveWhitePawnPromotion_NoPieceSpecified()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { pw, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, kw, o, kb, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            Move move = new Move(new Position(File.A, 7), new Position(File.A, 8), Player.White);
-            ChessGame cb = new ChessGame(board, Player.White);
-            Assert.False(cb.IsValidMove(move), "move should be invalid");
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { pw, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, kw, __, kb, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var move = new Move(new Square(File.A, 7), new Square(File.A, 8), Player.White);
+            var cb = new ChessGame(board, Player.White);
+            Assert.False(cb.IsValidMove(move));
         }
 
         [Test]
         public static void TestInvalidMoveBlackPawnPromotion_NoPieceSpecified()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, kw, o, kb, pb, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            Move move = new Move(new Position(File.G, 2), new Position(File.G, 1), Player.Black);
-            ChessGame cb = new ChessGame(board, Player.Black);
-            Assert.False(cb.IsValidMove(move), "move should be invalid");
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, kw, __, kb, pb, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var move = new Move(new Square(File.G, 2), new Square(File.G, 1), Player.Black);
+            var cb = new ChessGame(board, Player.Black);
+
+            Assert.False(cb.IsValidMove(move));
         }
 
         [Test]
         public static void TestApplyMoveBlackPawn_EnPassant()
         {
-            ChessGame cb = new ChessGame();
-            Move move1 = new Move(new Position(File.B, 1), new Position(File.A, 3), Player.White);
-            Move move2 = new Move(new Position(File.E, 7), new Position(File.E, 5), Player.Black);
-            Move move3 = new Move(new Position(File.E, 2), new Position(File.E, 3), Player.White);
-            Move move4 = new Move(new Position(File.E, 5), new Position(File.E, 4), Player.Black);
-            Move move5 = new Move(new Position(File.D, 2), new Position(File.D, 4), Player.White);
-            Move move6 = new Move(new Position(File.E, 4), new Position(File.D, 3), Player.Black);
+            var cb = new ChessGame();
+            var move1 = new Move(new Square(File.B, 1), new Square(File.A, 3), Player.White);
+            var move2 = new Move(new Square(File.E, 7), new Square(File.E, 5), Player.Black);
+            var move3 = new Move(new Square(File.E, 2), new Square(File.E, 3), Player.White);
+            var move4 = new Move(new Square(File.E, 5), new Square(File.E, 4), Player.Black);
+            var move5 = new Move(new Square(File.D, 2), new Square(File.D, 4), Player.White);
+            var move6 = new Move(new Square(File.E, 4), new Square(File.D, 3), Player.Black);
 
             cb.ApplyMove(move1, true);
             cb.ApplyMove(move2, true);
@@ -1847,50 +1826,50 @@ namespace ChessDotNet.Tests
             cb.ApplyMove(move5, true);
             cb.ApplyMove(move6, true);
 
-            Piece[][] board = new Piece[8][]
-            {
+            var board = new Piece[8][]
+                {
                 new[] { rb, nb, bb, qb, kb, bb, nb, rb },
-                new[] { pb, pb, pb, pb, o, pb, pb, pb },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { nw, o, o, pb, pw, o, o, o },
-                new[] { pw, pw, pw, o, o, pw, pw, pw },
-                new[] { rw, o, bw, qw, kw, bw, nw, rw }
-            };
+                new[] { pb, pb, pb, pb, __, pb, pb, pb },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { nw, __, __, pb, pw, __, __, __ },
+                new[] { pw, pw, pw, __, __, pw, pw, pw },
+                new[] { rw, __, bw, qw, kw, bw, nw, rw }
+                };
 
-            Assert.AreEqual(board, cb.GetBoard(), "Unexpected board layout after en passant capture.");
+            Assert.AreEqual(board, cb.GetBoard());
         }
 
         [Test]
         public static void TestApplyMoveWhiteKing_KingsideCastling()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, kb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, rw }
-            };
-            Move move = new Move(new Position(File.E, 1), new Position(File.G, 1), Player.White);
-            ChessGame cb = new ChessGame(board, Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, kb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, rw }
+                };
+            var move = new Move(new Square(File.E, 1), new Square(File.G, 1), Player.White);
+            var cb = new ChessGame(board, Player.White);
             cb.ApplyMove(move, true);
 
-            Piece[][] expected = new Piece[8][]
-            {
-                new[] { o, o, o, o, kb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, rw, kw, o }
-            };
+            var expected = new Piece[8][]
+                {
+                new[] { __, __, __, __, kb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, rw, kw, __ }
+                };
 
             Assert.AreEqual(expected, cb.GetBoard());
         }
@@ -1898,32 +1877,32 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestApplyMoveWhiteKing_QueensideCastling()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, kb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { rw, o, o, o, kw, o, o, o }
-            };
-            Move move = new Move(new Position(File.E, 1), new Position(File.C, 1), Player.White);
-            ChessGame cb = new ChessGame(board, Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, kb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { rw, __, __, __, kw, __, __, __ }
+                };
+            var move = new Move(new Square(File.E, 1), new Square(File.C, 1), Player.White);
+            var cb = new ChessGame(board, Player.White);
             cb.ApplyMove(move, true);
 
-            Piece[][] expected = new Piece[8][]
-            {
-                new[] { o, o, o, o, kb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, kw, rw, o, o, o, o }
-            };
+            var expected = new Piece[8][]
+                {
+                new[] { __, __, __, __, kb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, kw, rw, __, __, __, __ }
+                };
 
             Assert.AreEqual(expected, cb.GetBoard());
         }
@@ -1931,32 +1910,32 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestApplyMoveBlackKing_KingsideCastling()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, kb, o, o, rb },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, o }
-            };
-            Move move = new Move(new Position(File.E, 8), new Position(File.G, 8), Player.Black);
-            ChessGame cb = new ChessGame(board, Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, kb, __, __, rb },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, __ }
+                };
+            var move = new Move(new Square(File.E, 8), new Square(File.G, 8), Player.Black);
+            var cb = new ChessGame(board, Player.Black);
             cb.ApplyMove(move, true);
 
-            Piece[][] expected = new Piece[8][]
-            {
-                new[] { o, o, o, o, o, rb, kb, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, o }
-            };
+            var expected = new Piece[8][]
+                {
+                new[] { __, __, __, __, __, rb, kb, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, __ }
+                };
 
             Assert.AreEqual(expected, cb.GetBoard());
         }
@@ -1964,32 +1943,32 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestApplyMoveBlackKing_QueensideCastling()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { rb, o, o, o, kb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, o }
-            };
-            Move move = new Move(new Position(File.E, 8), new Position(File.C, 8), Player.Black);
-            ChessGame cb = new ChessGame(board, Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { rb, __, __, __, kb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, __ }
+                };
+            var move = new Move(new Square(File.E, 8), new Square(File.C, 8), Player.Black);
+            var cb = new ChessGame(board, Player.Black);
             cb.ApplyMove(move, true);
 
-            Piece[][] expected = new Piece[8][]
-            {
-                new[] { o, o, kb, rb, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, o }
-            };
+            var expected = new Piece[8][]
+                {
+                new[] { __, __, kb, rb, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, __ }
+                };
 
             Assert.AreEqual(expected, cb.GetBoard());
         }
@@ -1997,9 +1976,10 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestGetValidMovesWhiteStartingPosition()
         {
-            ChessGame cb = new ChessGame();
-            ReadOnlyCollection<Move> actual = cb.GetValidMoves(Player.White);
-            List<Move> expected = new List<Move>()
+            var cb = new ChessGame();
+            var actual = cb.GetValidMoves(Player.White);
+
+            var expected = new List<Move>
             {
                 new Move("A2", "A3", Player.White),
                 new Move("A2", "A4", Player.White),
@@ -2024,19 +2004,18 @@ namespace ChessDotNet.Tests
             };
 
             Assert.AreEqual(expected.Count, actual.Count);
-            foreach (Move move in expected)
-            {
-                Assert.True(actual.Contains(move), "Actual does not contain " + move.ToString());
-            }
+
+            foreach(var move in expected)
+                Assert.True(actual.Contains(move));
         }
 
         [Test]
         public static void TestGetValidMovesBlackStartingPosition()
         {
-            ChessGame cb = new ChessGame();
-            cb.ApplyMove(new Move(new Position(File.A, 2), new Position(File.A, 3), Player.White), true);
-            ReadOnlyCollection<Move> actual = cb.GetValidMoves(Player.Black);
-            List<Move> expected = new List<Move>()
+            var cb = new ChessGame();
+            cb.ApplyMove(new Move(new Square(File.A, 2), new Square(File.A, 3), Player.White), true);
+            var actual = cb.GetValidMoves(Player.Black);
+            var expected = new List<Move>
             {
                 new Move("A7", "A6", Player.Black),
                 new Move("A7", "A5", Player.Black),
@@ -2061,29 +2040,29 @@ namespace ChessDotNet.Tests
             };
 
             Assert.AreEqual(expected.Count, actual.Count);
-            foreach (Move move in expected)
-            {
-                Assert.True(actual.Contains(move), "Actual does not contain " + move.ToString());
-            }
+
+            foreach(var move in expected)
+                Assert.True(actual.Contains(move));
         }
 
         [Test]
         public static void TestGetValidMovesWhiteKing()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, kb, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, kw, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Position(File.D, 4));
-            List<Move> expected = new List<Move>()
+            var board = new Piece[8][]
+                {
+                new[] { __, __, kb, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, kw, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var actual = cb.GetValidMoves(new Square(File.D, 4));
+
+            var expected = new List<Move>
             {
                 new Move("D4", "C3", Player.White),
                 new Move("D4", "C4", Player.White),
@@ -2096,29 +2075,28 @@ namespace ChessDotNet.Tests
             };
 
             Assert.AreEqual(expected.Count, actual.Count);
-            foreach (Move move in expected)
-            {
-                Assert.True(actual.Contains(move), "Actual does not contain " + move.ToString());
-            }
+
+            foreach(var move in expected)
+                Assert.True(actual.Contains(move));
         }
 
         [Test]
         public static void TestGetValidMovesWhiteKnight()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, kw, o, kb, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, nw, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Position(File.D, 4));
-            List<Move> expected = new List<Move>()
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, kw, __, kb, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, nw, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var actual = cb.GetValidMoves(new Square(File.D, 4));
+            var expected = new List<Move>
             {
                 new Move("D4", "C2", Player.White),
                 new Move("D4", "B3", Player.White),
@@ -2131,29 +2109,28 @@ namespace ChessDotNet.Tests
             };
 
             Assert.AreEqual(expected.Count, actual.Count);
-            foreach (Move move in expected)
-            {
-                Assert.True(actual.Contains(move), "Actual does not contain " + move.ToString());
-            }
+
+            foreach(var move in expected)
+                Assert.True(actual.Contains(move));
         }
 
         [Test]
         public static void TestGetValidMovesWhiteBishop()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, kw, o, kb, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, bw, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Position(File.D, 4));
-            List<Move> expected = new List<Move>()
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, kw, __, kb, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, bw, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var actual = cb.GetValidMoves(new Square(File.D, 4));
+            var expected = new List<Move>
             {
                 new Move("D4", "A1", Player.White),
                 new Move("D4", "B2", Player.White),
@@ -2171,29 +2148,28 @@ namespace ChessDotNet.Tests
             };
 
             Assert.AreEqual(expected.Count, actual.Count);
-            foreach (Move move in expected)
-            {
-                Assert.True(actual.Contains(move), "Actual does not contain " + move.ToString());
-            }
+
+            foreach(var move in expected)
+                Assert.True(actual.Contains(move));
         }
 
         [Test]
         public static void TestGetValidMovesWhiteRook()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, kw, o, kb, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, rw, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Position(File.D, 4));
-            List<Move> expected = new List<Move>()
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, kw, __, kb, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, rw, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var actual = cb.GetValidMoves(new Square(File.D, 4));
+            var expected = new List<Move>
             {
                 new Move("D4", "D1", Player.White),
                 new Move("D4", "D2", Player.White),
@@ -2212,29 +2188,27 @@ namespace ChessDotNet.Tests
             };
 
             Assert.AreEqual(expected.Count, actual.Count);
-            foreach (Move move in expected)
-            {
-                Assert.True(actual.Contains(move), "Actual does not contain " + move.ToString());
-            }
+            foreach(var move in expected)
+                Assert.True(actual.Contains(move));
         }
 
         [Test]
         public static void TestGetValidMovesWhiteQueen()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, kw, o, kb, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, qw, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Position(File.D, 4));
-            List<Move> expected = new List<Move>()
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, kw, __, kb, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, qw, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var actual = cb.GetValidMoves(new Square(File.D, 4));
+            var expected = new List<Move>
             {
                 new Move("D4", "D1", Player.White),
                 new Move("D4", "D2", Player.White),
@@ -2266,29 +2240,29 @@ namespace ChessDotNet.Tests
             };
 
             Assert.AreEqual(expected.Count, actual.Count);
-            foreach (Move move in expected)
+            foreach(var move in expected)
             {
-                Assert.True(actual.Contains(move), "Actual does not contain " + move.ToString());
+                Assert.True(actual.Contains(move));
             }
         }
 
         [Test]
         public static void TestGetValidMovesWhitePawn()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { kw, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, kb, o, o, o, o },
-                new[] { pb, o, pb, o, o, o, o, o },
-                new[] { o, pw, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Position(File.B, 2));
-            List<Move> expected = new List<Move>()
+            var board = new Piece[8][]
+                {
+                new[] { kw, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, kb, __, __, __, __ },
+                new[] { pb, __, pb, __, __, __, __, __ },
+                new[] { __, pw, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
+            var actual = cb.GetValidMoves(new Square(File.B, 2));
+            var expected = new List<Move>
             {
                 new Move("B2", "B3", Player.White),
                 new Move("B2", "B4", Player.White),
@@ -2297,29 +2271,29 @@ namespace ChessDotNet.Tests
             };
 
             Assert.AreEqual(expected.Count, actual.Count);
-            foreach (Move move in expected)
+            foreach(var move in expected)
             {
-                Assert.True(actual.Contains(move), "Actual does not contain " + move.ToString());
+                Assert.True(actual.Contains(move));
             }
         }
 
         [Test]
         public static void TestGetValidMovesWhitePawnPromotion()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { kw, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, pw },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, kb, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
-            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Position(File.H, 7));
-            List<Move> expected = new List<Move>()
+            var board = new Piece[8][]
+                {
+                new[] { kw, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, pw },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, kb, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
+            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Square(File.H, 7));
+            var expected = new List<Move>
             {
                 new Move("H7", "H8", Player.White, new Queen(Player.White)),
                 new Move("H7", "H8", Player.White, new Rook(Player.White)),
@@ -2328,29 +2302,29 @@ namespace ChessDotNet.Tests
             };
 
             Assert.AreEqual(expected.Count, actual.Count);
-            foreach (Move move in expected)
+            foreach(var move in expected)
             {
-                Assert.True(actual.Contains(move), "Actual does not contain " + move.ToString());
+                Assert.True(actual.Contains(move));
             }
         }
 
         [Test]
         public static void TestGetValidMovesBlackKing()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { kw, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, kb, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Position(File.D, 4));
-            List<Move> expected = new List<Move>()
+            var board = new Piece[8][]
+                {
+                new[] { kw, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, kb, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Square(File.D, 4));
+            var expected = new List<Move>
             {
                 new Move("D4", "C3", Player.Black),
                 new Move("D4", "C4", Player.Black),
@@ -2363,29 +2337,29 @@ namespace ChessDotNet.Tests
             };
 
             Assert.AreEqual(expected.Count, actual.Count);
-            foreach (Move move in expected)
+            foreach(var move in expected)
             {
-                Assert.True(actual.Contains(move), "Actual does not contain " + move.ToString());
+                Assert.True(actual.Contains(move));
             }
         }
 
         [Test]
         public static void TestGetValidMovesBlackKnight()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, kw, o, kb, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, nb, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Position(File.D, 4));
-            List<Move> expected = new List<Move>()
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, kw, __, kb, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, nb, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Square(File.D, 4));
+            var expected = new List<Move>
             {
                 new Move("D4", "C2", Player.Black),
                 new Move("D4", "B3", Player.Black),
@@ -2398,29 +2372,29 @@ namespace ChessDotNet.Tests
             };
 
             Assert.AreEqual(expected.Count, actual.Count);
-            foreach (Move move in expected)
+            foreach(var move in expected)
             {
-                Assert.True(actual.Contains(move), "Actual does not contain " + move.ToString());
+                Assert.True(actual.Contains(move));
             }
         }
 
         [Test]
         public static void TestGetValidMovesBlackBishop()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, kw, o, kb, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, bb, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Position(File.D, 4));
-            List<Move> expected = new List<Move>()
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, kw, __, kb, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, bb, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Square(File.D, 4));
+            var expected = new List<Move>
             {
                 new Move("D4", "A1", Player.Black),
                 new Move("D4", "B2", Player.Black),
@@ -2438,29 +2412,29 @@ namespace ChessDotNet.Tests
             };
 
             Assert.AreEqual(expected.Count, actual.Count);
-            foreach (Move move in expected)
+            foreach(var move in expected)
             {
-                Assert.True(actual.Contains(move), "Actual does not contain " + move.ToString());
+                Assert.True(actual.Contains(move));
             }
         }
 
         [Test]
         public static void TestGetValidMovesBlackRook()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, kw, o, kb, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, rb, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Position(File.D, 4));
-            List<Move> expected = new List<Move>()
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, kw, __, kb, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, rb, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Square(File.D, 4));
+            var expected = new List<Move>
             {
                 new Move("D4", "D1", Player.Black),
                 new Move("D4", "D2", Player.Black),
@@ -2479,29 +2453,29 @@ namespace ChessDotNet.Tests
             };
 
             Assert.AreEqual(expected.Count, actual.Count);
-            foreach (Move move in expected)
+            foreach(var move in expected)
             {
-                Assert.True(actual.Contains(move), "Actual does not contain " + move.ToString());
+                Assert.True(actual.Contains(move));
             }
         }
 
         [Test]
         public static void TestGetValidMovesBlackQueen()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, kw, o, kb, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, qb, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Position(File.D, 4));
-            List<Move> expected = new List<Move>()
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, kw, __, kb, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, qb, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Square(File.D, 4));
+            var expected = new List<Move>
             {
                 new Move("D4", "D1", Player.Black),
                 new Move("D4", "D2", Player.Black),
@@ -2533,29 +2507,29 @@ namespace ChessDotNet.Tests
             };
 
             Assert.AreEqual(expected.Count, actual.Count);
-            foreach (Move move in expected)
+            foreach(var move in expected)
             {
-                Assert.True(actual.Contains(move), "Actual does not contain " + move.ToString());
+                Assert.True(actual.Contains(move));
             }
         }
 
         [Test]
         public static void TestGetValidMovesBlackPawn()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { kw, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, kb, o, o, o, o },
-                new[] { o, pb, o, o, o, o, o, o },
-                new[] { pw, o, pw, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Position(File.B, 3));
-            List<Move> expected = new List<Move>()
+            var board = new Piece[8][]
+                {
+                new[] { kw, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, kb, __, __, __, __ },
+                new[] { __, pb, __, __, __, __, __, __ },
+                new[] { pw, __, pw, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Square(File.B, 3));
+            var expected = new List<Move>
             {
                 new Move("B3", "B2", Player.Black),
                 new Move("B3", "A2", Player.Black),
@@ -2563,29 +2537,29 @@ namespace ChessDotNet.Tests
             };
 
             Assert.AreEqual(expected.Count, actual.Count);
-            foreach (Move move in expected)
+            foreach(var move in expected)
             {
-                Assert.True(actual.Contains(move), "Actual does not contain " + move.ToString());
+                Assert.True(actual.Contains(move));
             }
         }
 
         [Test]
         public static void TestGetValidMovesBlackPawnPromotion()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { kw, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, kb, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, pb },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
-            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Position(File.H, 2));
-            List<Move> expected = new List<Move>()
+            var board = new Piece[8][]
+                {
+                new[] { kw, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, kb, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, pb },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
+            ReadOnlyCollection<Move> actual = cb.GetValidMoves(new Square(File.H, 2));
+            var expected = new List<Move>
             {
                 new Move("H2", "H1", Player.Black, new Queen(Player.Black)),
                 new Move("H2", "H1", Player.Black, new Rook(Player.Black)),
@@ -2594,27 +2568,27 @@ namespace ChessDotNet.Tests
             };
 
             Assert.AreEqual(expected.Count, actual.Count);
-            foreach (Move move in expected)
+            foreach(var move in expected)
             {
-                Assert.True(actual.Contains(move), "Actual does not contain " + move.ToString());
+                Assert.True(actual.Contains(move));
             }
         }
 
         [Test]
         public static void TestIsWhiteInCheck()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { kw, o, o, o, o, o, o, qb },
-                new[] { pw, o, o, pb, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { kb, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { kw, __, __, __, __, __, __, qb },
+                new[] { pw, __, __, pb, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { kb, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
 
             Assert.AreEqual(GameEvent.Check, cb.Status.Event);
             Assert.AreEqual(Player.Black, cb.Status.PlayerWhoCausedEvent);
@@ -2624,18 +2598,18 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestIsWhiteInCheck_OnRank1()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, pb, o },
-                new[] { kb, o, o, o, o, o, o, kw }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, pb, __ },
+                new[] { kb, __, __, __, __, __, __, kw }
+                };
+            var cb = new ChessGame(board, Player.White);
 
             Assert.AreEqual(GameEvent.Check, cb.Status.Event);
             Assert.AreEqual(Player.Black, cb.Status.PlayerWhoCausedEvent);
@@ -2645,18 +2619,18 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestIsWhiteNotInCheck()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { kw, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, qb },
-                new[] { pw, o, o, pb, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { kw, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, qb },
+                new[] { pw, __, __, pb, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
 
             Assert.AreEqual(GameEvent.None, cb.Status.Event);
         }
@@ -2664,18 +2638,18 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestIsWhiteNotInCheck_PawnsCanOnlyCheckDiagonally()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, o },
-                new[] { o, o, o, o, pb, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { kb, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, __ },
+                new[] { __, __, __, __, pb, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { kb, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
 
             Assert.AreEqual(GameEvent.None, cb.Status.Event);
         }
@@ -2683,18 +2657,18 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestIsBlackInCheck()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, nw, o, o, o, o },
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { kw, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, pb },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, nw, __, __, __, __ },
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { kw, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, pb },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
 
             Assert.AreEqual(GameEvent.Check, cb.Status.Event);
             Assert.AreEqual(Player.White, cb.Status.PlayerWhoCausedEvent);
@@ -2704,18 +2678,18 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestIsBlackInCheck_OnRank8()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, kb, o, o, o },
-                new[] { o, o, o, pw, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { kw, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, kb, __, __, __ },
+                new[] { __, __, __, pw, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { kw, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
 
             Assert.AreEqual(GameEvent.Check, cb.Status.Event);
             Assert.AreEqual(Player.White, cb.Status.PlayerWhoCausedEvent);
@@ -2725,18 +2699,18 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestIsBlackNotInCheck()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, nb, o, o, o, o },
-                new[] { o, kb, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { kw, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, pb },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, nb, __, __, __, __ },
+                new[] { __, kb, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { kw, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, pb },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
 
             Assert.AreEqual(GameEvent.None, cb.Status.Event);
         }
@@ -2744,18 +2718,18 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestIsBlackNotInCheck_PawnsCanOnlyCheckDiagonally()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kb, o, o, o },
-                new[] { o, o, o, o, pw, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { kw, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kb, __, __, __ },
+                new[] { __, __, __, __, pw, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { kw, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
 
             Assert.AreEqual(GameEvent.None, cb.Status.Event);
         }
@@ -2763,7 +2737,7 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestBlackCheckmated()
         {
-            ChessGame cb = new ChessGame();
+            var cb = new ChessGame();
             cb.ApplyMove(new Move("E2", "E4", Player.White), true);
             cb.ApplyMove(new Move("E7", "E5", Player.Black), true);
             cb.ApplyMove(new Move("F1", "C4", Player.White), true);
@@ -2780,18 +2754,18 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestBlackStalemated()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { kb, o, kw, o, o, o, o, o },
-                new[] { o, o, qw, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { kb, __, kw, __, __, __, __, __ },
+                new[] { __, __, qw, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
 
             Assert.AreEqual(GameEvent.Stalemate, cb.Status.Event);
             Assert.AreEqual(Player.White, cb.Status.PlayerWhoCausedEvent);
@@ -2801,18 +2775,18 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestBlackNotStalemated()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { kb, o, kw, o, o, o, o, o },
-                new[] { o, o, qw, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.White);
+            var board = new Piece[8][]
+                {
+                new[] { kb, __, kw, __, __, __, __, __ },
+                new[] { __, __, qw, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.White);
 
             Assert.AreEqual(GameEvent.None, cb.Status.Event);
             Assert.AreEqual(Player.None, cb.Status.PlayerWhoCausedEvent);
@@ -2822,18 +2796,18 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestBlackNotStalematedAfterApplyMove()
         {
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { o, o, kw, o, o, o, o, o },
-                new[] { kb, o, qw, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o }
-            };
-            ChessGame cb = new ChessGame(board, Player.Black);
+            var board = new Piece[8][]
+                {
+                new[] { __, __, kw, __, __, __, __, __ },
+                new[] { kb, __, qw, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ }
+                };
+            var cb = new ChessGame(board, Player.Black);
 
             Assert.AreNotEqual(cb.ApplyMove(new Move("A7", "A8", Player.Black), false), MoveType.Invalid);
 
@@ -2845,7 +2819,7 @@ namespace ChessDotNet.Tests
         [Test]
         public static void TestApplyMove_ReturnedMoveType()
         {
-            ChessGame game = new ChessGame();
+            var game = new ChessGame();
             MoveType type = game.ApplyMove(new Move("E2", "E4", Player.White), true);
             Assert.AreEqual(type, MoveType.Move);
             type = game.ApplyMove(new Move("D7", "D5", Player.Black), true);
@@ -2855,17 +2829,17 @@ namespace ChessDotNet.Tests
             type = game.ApplyMove(new Move("A5", "A4", Player.White), false);
             Assert.AreEqual(type, MoveType.Invalid);
 
-            Piece[][] board = new Piece[8][]
-            {
-                new[] { rb, o, o, kb, o, o, o, o },
-                new[] { o, pw, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { pb, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, kw, o, o, rw }
-            };
+            var board = new Piece[8][]
+                {
+                new[] { rb, __, __, kb, __, __, __, __ },
+                new[] { __, pw, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { pb, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, kw, __, __, rw }
+                };
             game = new ChessGame(board, Player.White);
             type = game.ApplyMove(new Move("E1", "G1", Player.White), true);
             Assert.AreEqual(type, MoveType.Move | MoveType.Castling);

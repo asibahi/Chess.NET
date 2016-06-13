@@ -16,7 +16,7 @@ namespace ChessDotNet
         None = -1
     }
 
-    public class Position
+    public class Square
     {
         File _file;
         public File File => _file;
@@ -24,13 +24,13 @@ namespace ChessDotNet
         int _rank;
         public int Rank => _rank;
 
-        public Position(File file, int rank)
+        public Square(File file, int rank)
         {
             _file = file;
             _rank = rank;
         }
 
-        public Position(string position)
+        public Square(string position)
         {
             if(position == null)
                 throw new ArgumentNullException(nameof(position));
@@ -45,27 +45,35 @@ namespace ChessDotNet
                 case 'A':
                     _file = File.A;
                     break;
+
                 case 'B':
                     _file = File.B;
                     break;
+
                 case 'C':
                     _file = File.C;
                     break;
+
                 case 'D':
                     _file = File.D;
                     break;
+
                 case 'E':
                     _file = File.E;
                     break;
+
                 case 'F':
                     _file = File.F;
                     break;
+
                 case 'G':
                     _file = File.G;
                     break;
+
                 case 'H':
                     _file = File.H;
                     break;
+
                 default:
                     throw new ArgumentException("First char of `pos` not in range A-F.");
             }
@@ -89,14 +97,14 @@ namespace ChessDotNet
             if(obj == null || GetType() != obj.GetType())
                 return false;
 
-            var pos2 = (Position)obj;
+            var pos2 = (Square)obj;
 
             return File == pos2.File && Rank == pos2.Rank;
         }
 
         public override int GetHashCode() => new { File, Rank }.GetHashCode();
 
-        public static bool operator ==(Position position1, Position position2)
+        public static bool operator ==(Square position1, Square position2)
         {
             if(ReferenceEquals(position1, position2))
                 return true;
@@ -107,7 +115,7 @@ namespace ChessDotNet
             return position1.Equals(position2);
         }
 
-        public static bool operator !=(Position position1, Position position2)
+        public static bool operator !=(Square position1, Square position2)
         {
             return !(position1 == position2);
         }

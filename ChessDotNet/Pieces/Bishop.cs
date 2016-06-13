@@ -7,9 +7,13 @@ namespace ChessDotNet.Pieces
     {
         public override Player Owner { get; set; }
 
-        public Bishop(Player owner) { Owner = owner; }
+        public Bishop(Player owner)
+        {
+            Owner = owner;
+        }
 
         public override char GetFenCharacter() => Owner == Player.White ? 'B' : 'b';
+
         public override bool IsValidMove(Move move, ChessGame game)
         {
             ChessUtilities.ThrowIfNull(move, nameof(move));
@@ -18,7 +22,7 @@ namespace ChessDotNet.Pieces
             var origin = move.OriginalPosition;
             var destination = move.NewPosition;
 
-            var posDelta = new PositionDistance(origin, destination);
+            var posDelta = new SquareDistance(origin, destination);
 
             if(posDelta.DistanceX != posDelta.DistanceY)
                 return false;
@@ -40,7 +44,7 @@ namespace ChessDotNet.Pieces
             return true;
         }
 
-        public override ReadOnlyCollection<Move> GetValidMoves(Position from, bool returnIfAny, ChessGame game)
+        public override ReadOnlyCollection<Move> GetValidMoves(Square from, bool returnIfAny, ChessGame game)
         {
             var validMoves = new List<Move>();
             var piece = game.GetPieceAt(from);
@@ -52,7 +56,7 @@ namespace ChessDotNet.Pieces
 
                 if(from.Rank + i > 0 && from.Rank + i <= game.BoardHeight && (int)from.File + i > -1 && (int)from.File + i < game.BoardWidth)
                 {
-                    var move = new Move(from, new Position(from.File + i, from.Rank + i), piece.Owner);
+                    var move = new Move(from, new Square(from.File + i, from.Rank + i), piece.Owner);
                     if(game.IsValidMove(move))
                     {
                         validMoves.Add(move);
@@ -62,7 +66,7 @@ namespace ChessDotNet.Pieces
                 }
                 if(from.Rank - i > 0 && from.Rank - i <= game.BoardHeight && (int)from.File + i > -1 && (int)from.File + i < game.BoardWidth)
                 {
-                    var move = new Move(from, new Position(from.File + i, from.Rank - i), piece.Owner);
+                    var move = new Move(from, new Square(from.File + i, from.Rank - i), piece.Owner);
                     if(game.IsValidMove(move))
                     {
                         validMoves.Add(move);

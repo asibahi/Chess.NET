@@ -2,31 +2,13 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using ChessDotNet.Pieces;
 using System.Text;
+using ChessDotNet.Pieces;
 
 namespace ChessDotNet
 {
     public class ChessGame
     {
-        // FEN data exists within the pieces, isnt this redundant?
-        Dictionary<char, Piece> FenMappings
-            => new Dictionary<char, Piece>
-                {
-                    { 'K', new King(Player.White) },
-                    { 'k', new King(Player.Black) },
-                    { 'Q', new Queen(Player.White) },
-                    { 'q', new Queen(Player.Black) },
-                    { 'R', new Rook(Player.White) },
-                    { 'r', new Rook(Player.Black) },
-                    { 'B', new Bishop(Player.White) },
-                    { 'b', new Bishop(Player.Black) },
-                    { 'N', new Knight(Player.White) },
-                    { 'n', new Knight(Player.Black) },
-                    { 'P', new Pawn(Player.White) },
-                    { 'p', new Pawn(Player.Black) },
-                };
-
         public GameStatus Status => CalculateStatus(WhoseTurn, true);
 
         bool canClaimDraw;
@@ -47,6 +29,7 @@ namespace ChessDotNet
         public int BoardHeight => 8;
 
         Piece[][] Board;
+
         public Piece[][] GetBoard() => CloneBoard(Board);
 
         List<DetailedMove> _moves = new List<DetailedMove>();
@@ -97,15 +80,15 @@ namespace ChessDotNet
             Piece bb = new Bishop(Player.Black);
             Piece pw = new Pawn(Player.White);
             Piece pb = new Pawn(Player.Black);
-            Piece o = null;
+            Piece __ = null;
             Board = new Piece[8][]
             {
                 new[] { rb, nb, bb, qb, kb, bb, nb, rb },
                 new[] { pb, pb, pb, pb, pb, pb, pb, pb },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
-                new[] { o, o, o, o, o, o, o, o },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
+                new[] { __, __, __, __, __, __, __, __ },
                 new[] { pw, pw, pw, pw, pw, pw, pw, pw },
                 new[] { rw, nw, bw, qw, kw, bw, nw, rw }
             };
@@ -135,7 +118,6 @@ namespace ChessDotNet
             UseGameCreationData(data);
         }
 
-
         // [Obsolete("This constructor is obsolete, use ChessGame(GameCreationData) instead.")]
         public ChessGame(Piece[][] board, Player whoseTurn)
         {
@@ -148,18 +130,13 @@ namespace ChessDotNet
             Piece h1 = GetPieceAt(File.H, 1);
             Piece a8 = GetPieceAt(File.A, 8);
             Piece h8 = GetPieceAt(File.H, 8);
-            if(!(e1 is King) || e1.Owner != Player.White)
-                _whiteKingMoved = true;
-            if(!(e8 is King) || e8.Owner != Player.Black)
-                _blackKingMoved = true;
-            if(!(a1 is Rook) || a1.Owner != Player.White)
-                _whiteRookAMoved = true;
-            if(!(h1 is Rook) || h1.Owner != Player.White)
-                _whiteRookHMoved = true;
-            if(!(a8 is Rook) || a8.Owner != Player.Black)
-                _blackRookAMoved = true;
-            if(!(h8 is Rook) || h8.Owner != Player.Black)
-                _blackRookHMoved = true;
+
+            _whiteKingMoved |= (!(e1 is King) || e1.Owner != Player.White);
+            _blackKingMoved |= (!(e8 is King) || e8.Owner != Player.Black);
+            _whiteRookAMoved |= (!(a1 is Rook) || a1.Owner != Player.White);
+            _whiteRookHMoved |= (!(h1 is Rook) || h1.Owner != Player.White);
+            _blackRookAMoved |= (!(a8 is Rook) || a8.Owner != Player.Black);
+            _blackRookHMoved |= (!(h8 is Rook) || h8.Owner != Player.Black);
         }
 
         void UseGameCreationData(GameCreationData data)
@@ -172,27 +149,25 @@ namespace ChessDotNet
             Piece h1 = GetPieceAt(File.H, 1);
             Piece a8 = GetPieceAt(File.A, 8);
             Piece h8 = GetPieceAt(File.H, 8);
-            if(!(e1 is King) || e1.Owner != Player.White)
-                _whiteKingMoved = true;
-            if(!(e8 is King) || e8.Owner != Player.Black)
-                _blackKingMoved = true;
-            if(!(a1 is Rook) || a1.Owner != Player.White || !data.CanWhiteCastleQueenSide)
-                _whiteRookAMoved = true;
-            if(!(h1 is Rook) || h1.Owner != Player.White || !data.CanWhiteCastleKingSide)
-                _whiteRookHMoved = true;
-            if(!(a8 is Rook) || a8.Owner != Player.Black || !data.CanBlackCastleQueenSide)
-                _blackRookAMoved = true;
-            if(!(h8 is Rook) || h8.Owner != Player.Black || !data.CanBlackCastleKingSide)
-                _blackRookHMoved = true;
+
+            _whiteKingMoved |= (!(e1 is King) || e1.Owner != Player.White);
+            _blackKingMoved |= (!(e8 is King) || e8.Owner != Player.Black);
+            _whiteRookAMoved |= (!(a1 is Rook) || a1.Owner != Player.White || !data.CanWhiteCastleQueenSide);
+            _whiteRookHMoved |= (!(h1 is Rook) || h1.Owner != Player.White || !data.CanWhiteCastleKingSide);
+            _blackRookAMoved |= (!(a8 is Rook) || a8.Owner != Player.Black || !data.CanBlackCastleQueenSide);
+            _blackRookHMoved |= (!(h8 is Rook) || h8.Owner != Player.Black || !data.CanBlackCastleKingSide);
 
             if(data.EnPassant != null)
             {
-                DetailedMove latestMove = new DetailedMove(new Move(new Position(data.EnPassant.File, data.WhoseTurn == Player.White ? 7 : 2),
-                                                                    new Position(data.EnPassant.File, data.WhoseTurn == Player.White ? 5 : 4),
-                                                                    ChessUtilities.GetOpponentOf(data.WhoseTurn)),
-                                          new Pawn(ChessUtilities.GetOpponentOf(data.WhoseTurn)),
-                                          false,
-                                          CastlingType.None);
+                var latestMove =
+                    new DetailedMove(
+                        new Move(new Square(data.EnPassant.File, data.WhoseTurn == Player.White ? 7 : 2),
+                                 new Square(data.EnPassant.File, data.WhoseTurn == Player.White ? 5 : 4),
+                                 ChessUtilities.GetOpponentOf(data.WhoseTurn)),
+                        new Pawn(ChessUtilities.GetOpponentOf(data.WhoseTurn)),
+                        false,
+                        CastlingType.None);
+
                 _moves.Add(latestMove);
             }
 
@@ -298,9 +273,27 @@ namespace ChessDotNet
             return fenBuilder.ToString();
         }
 
+        // FEN data exists within the pieces, isnt this redundant? I can't think of another way to do
+        // it that would be _simpler_ without doing significant rewrite
+        Dictionary<char, Piece> FenMappings
+            => new Dictionary<char, Piece>
+                {
+                    { 'K', new King(Player.White) },
+                    { 'k', new King(Player.Black) },
+                    { 'Q', new Queen(Player.White) },
+                    { 'q', new Queen(Player.Black) },
+                    { 'R', new Rook(Player.White) },
+                    { 'r', new Rook(Player.Black) },
+                    { 'B', new Bishop(Player.White) },
+                    { 'b', new Bishop(Player.Black) },
+                    { 'N', new Knight(Player.White) },
+                    { 'n', new Knight(Player.Black) },
+                    { 'P', new Pawn(Player.White) },
+                    { 'p', new Pawn(Player.Black) }
+                };
+
         GameCreationData FenStringToGameCreationData(string fen)
         {
-            var fenMappings = FenMappings;
             var parts = fen.Split(' ');
             if(parts.Length != 6)
                 throw new ArgumentException("The FEN string does not have 6 parts.");
@@ -316,7 +309,7 @@ namespace ChessDotNet
             for(int i = 0; i < 8; i++)
             {
                 var row = rows[i];
-                var currentRow = new Piece[8] { null, null, null, null, null, null, null, null };
+                var currentRow = new Piece[] { null, null, null, null, null, null, null, null };
                 var j = 0;
 
                 foreach(var c in row)
@@ -327,10 +320,10 @@ namespace ChessDotNet
                         continue;
                     }
 
-                    if(!fenMappings.ContainsKey(c))
+                    if(!FenMappings.ContainsKey(c))
                         throw new ArgumentException("The FEN string contains an unknown piece.");
 
-                    currentRow[j] = fenMappings[c];
+                    currentRow[j] = FenMappings[c];
                     j++;
                 }
 
@@ -361,7 +354,7 @@ namespace ChessDotNet
             }
             else
             {
-                Position ep = new Position(parts[3]);
+                var ep = new Square(parts[3]);
                 if((data.WhoseTurn == Player.White && (ep.Rank != 6 || !(data.Board[3][(int)ep.File] is Pawn))) ||
                     (data.WhoseTurn == Player.Black && (ep.Rank != 3 || !(data.Board[4][(int)ep.File] is Pawn))))
                 {
@@ -396,7 +389,6 @@ namespace ChessDotNet
             if(_resigned != Player.None)
                 return new GameStatus(GameEvent.Resign, _resigned, _resigned + " resigned");
 
-
             var other = ChessUtilities.GetOpponentOf(playerToValidate);
             if(IsInCheck(playerToValidate))
             {
@@ -412,7 +404,7 @@ namespace ChessDotNet
             return new GameStatus(GameEvent.None, Player.None, "No special event");
         }
 
-        public Piece GetPieceAt(Position position)
+        public Piece GetPieceAt(Square position)
         {
             ChessUtilities.ThrowIfNull(position, nameof(position));
             return GetPieceAt(position.File, position.Rank);
@@ -501,7 +493,7 @@ namespace ChessDotNet
             if(movingPiece is Pawn)
             {
                 _halfMoveClock = 0;
-                var pd = new PositionDistance(move.OriginalPosition, move.NewPosition);
+                var pd = new SquareDistance(move.OriginalPosition, move.NewPosition);
                 if(pd.DistanceX == 1 && pd.DistanceY == 1 && GetPieceAt(move.NewPosition) == null)
                 { // en passant
                     isCapture = true;
@@ -520,7 +512,7 @@ namespace ChessDotNet
                 else
                     _blackKingMoved = true;
 
-                if(new PositionDistance(move.OriginalPosition, move.NewPosition).DistanceX == 2)
+                if(new SquareDistance(move.OriginalPosition, move.NewPosition).DistanceX == 2)
                 {
                     castle = ApplyCastle(move);
                     type |= MoveType.Castling;
@@ -543,7 +535,6 @@ namespace ChessDotNet
                         _blackRookHMoved = true;
                 }
             }
-
 
             if(isCapture)
             {
@@ -570,13 +561,13 @@ namespace ChessDotNet
             return type;
         }
 
-        public ReadOnlyCollection<Move> GetValidMoves(Position from)
+        public ReadOnlyCollection<Move> GetValidMoves(Square from)
         {
             ChessUtilities.ThrowIfNull(from, nameof(from));
             return GetValidMoves(from, false);
         }
 
-        ReadOnlyCollection<Move> GetValidMoves(Position from, bool returnIfAny)
+        ReadOnlyCollection<Move> GetValidMoves(Square from, bool returnIfAny)
         {
             ChessUtilities.ThrowIfNull(from, nameof(from));
             var piece = GetPieceAt(from);
@@ -599,7 +590,7 @@ namespace ChessDotNet
                     var p = GetPieceAt((File)f, r);
                     if(p != null && p.Owner == player)
                     {
-                        validMoves.AddRange(GetValidMoves(new Position((File)f, r), returnIfAny));
+                        validMoves.AddRange(GetValidMoves(new Square((File)f, r), returnIfAny));
                         if(returnIfAny && validMoves.Count > 0)
                             return new ReadOnlyCollection<Move>(validMoves);
                     }
@@ -608,7 +599,7 @@ namespace ChessDotNet
             return new ReadOnlyCollection<Move>(validMoves);
         }
 
-        public bool HasAnyValidMoves(Position from)
+        public bool HasAnyValidMoves(Square from)
         {
             ChessUtilities.ThrowIfNull(from, nameof(from));
             return GetValidMoves(from, true).Count > 0;
@@ -618,7 +609,7 @@ namespace ChessDotNet
 
         bool IsInCheck(Player player)
         {
-            var kingPos = new Position(File.None, -1);
+            var kingPos = new Square(File.None, -1);
 
             for(int r = 1; r <= Board.Length; r++)
             {
@@ -627,12 +618,12 @@ namespace ChessDotNet
                     var curr = GetPieceAt((File)f, r);
                     if(curr is King && curr.Owner == player)
                     {
-                        kingPos = new Position((File)f, r);
+                        kingPos = new Square((File)f, r);
                         break;
                     }
                 }
 
-                if(kingPos != new Position(File.None, -1))
+                if(kingPos != new Square(File.None, -1))
                     break;
             }
 
@@ -647,7 +638,7 @@ namespace ChessDotNet
                         continue;
 
                     var p = curr.Owner;
-                    var move = new Move(new Position((File)f, r), kingPos, p);
+                    var move = new Move(new Square((File)f, r), kingPos, p);
                     var moves = new List<Move>();
 
                     if(curr is Pawn && ((move.NewPosition.Rank == 8 && move.Player == Player.White) || (move.NewPosition.Rank == 1 && move.Player == Player.Black)))
@@ -685,8 +676,8 @@ namespace ChessDotNet
             if(_moves.Count > 0)
             {
                 var last = _moves.Last();
-                if(last.Piece is Pawn && new PositionDistance(last.OriginalPosition, last.NewPosition).DistanceY == 2)
-                    gcd.EnPassant = new Position(last.NewPosition.File, last.Player == Player.White ? 3 : 6);
+                if(last.Piece is Pawn && new SquareDistance(last.OriginalPosition, last.NewPosition).DistanceY == 2)
+                    gcd.EnPassant = new Square(last.NewPosition.File, last.Player == Player.White ? 3 : 6);
             }
 
             gcd.HalfMoveClock = _halfMoveClock;

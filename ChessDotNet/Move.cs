@@ -2,15 +2,15 @@
 {
     public class Move
     {
-        public Position OriginalPosition { get; private set; }
+        public Square OriginalPosition { get; private set; }
 
-        public Position NewPosition { get; private set; }
+        public Square NewPosition { get; private set; }
 
         public Player Player { get; private set; }
 
         public Piece Promotion { get; private set; }
 
-        public Move(Position originalPosition, Position newPosition, Player player)
+        public Move(Square originalPosition, Square newPosition, Player player)
             : this(originalPosition, newPosition, player, null)
         { }
 
@@ -18,7 +18,7 @@
             : this(originalPosition, newPosition, player, null)
         { }
 
-        public Move(Position originalPosition, Position newPosition, Player player, Piece promotion)
+        public Move(Square originalPosition, Square newPosition, Player player, Piece promotion)
         {
             OriginalPosition = originalPosition;
             NewPosition = newPosition;
@@ -28,8 +28,8 @@
 
         public Move(string originalPosition, string newPosition, Player player, Piece promotion)
         {
-            OriginalPosition = new Position(originalPosition);
-            NewPosition = new Position(newPosition);
+            OriginalPosition = new Square(originalPosition);
+            NewPosition = new Square(newPosition);
             Player = player;
             Promotion = promotion;
         }

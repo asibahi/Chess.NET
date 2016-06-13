@@ -36,7 +36,9 @@ namespace ChessDotNet
         }
 
         public abstract char GetFenCharacter();
+
         public abstract bool IsValidMove(Move move, ChessGame game);
-        public abstract ReadOnlyCollection<Move> GetValidMoves(Position from, bool returnIfAny, ChessGame game);
+
+        public abstract ReadOnlyCollection<Move> GetValidMoves(Square from, bool returnIfAny, ChessGame game);
     }
 }
