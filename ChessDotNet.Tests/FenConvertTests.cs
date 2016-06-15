@@ -317,7 +317,7 @@ namespace ChessDotNet.Tests
         [TestCase("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBN w KQkq - 0 1")]
         public static void TestChessGameFenConstructorInvalid(string fen)
         {
-            Assert.Throws<ArgumentException>(() => { var game = new ChessGame(fen); });
+            Assert.Throws<ArgumentException>(() => new ChessGame(fen));
         }
     }
 }

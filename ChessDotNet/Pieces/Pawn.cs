@@ -25,14 +25,16 @@ namespace ChessDotNet.Pieces
             var promotion = move.Promotion;
             var posDelta = new SquareDistance(origin, destination);
 
-            if((posDelta.DistanceX != 0 || posDelta.DistanceY != 1) && (posDelta.DistanceX != 1 || posDelta.DistanceY != 1)
-                        && (posDelta.DistanceX != 0 || posDelta.DistanceY != 2))
+            if((posDelta.DistanceX != 0 || posDelta.DistanceY != 1)
+            && (posDelta.DistanceX != 1 || posDelta.DistanceY != 1)
+            && (posDelta.DistanceX != 0 || posDelta.DistanceY != 2))
                 return false;
 
             if(Owner == Player.White)
             {
                 if(origin.Rank > destination.Rank)
                     return false;
+
                 if(destination.Rank == 8 && promotion == null)
                     return false;
             }
@@ -40,6 +42,7 @@ namespace ChessDotNet.Pieces
             {
                 if(origin.Rank < destination.Rank)
                     return false;
+
                 if(destination.Rank == 1 && promotion == null)
                     return false;
             }
@@ -49,7 +52,7 @@ namespace ChessDotNet.Pieces
             if(posDelta.DistanceY == 2)
             {
                 if((origin.Rank != 2 && Owner == Player.White)
-                    || (origin.Rank != 7 && Owner == Player.Black))
+                   || (origin.Rank != 7 && Owner == Player.Black))
                     return false;
                 if(origin.Rank == 2 && game.GetPieceAt(origin.File, 3) != null)
                     return false;

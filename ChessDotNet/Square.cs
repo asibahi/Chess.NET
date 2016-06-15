@@ -39,41 +39,32 @@ namespace ChessDotNet
                 throw new ArgumentException("Length of `pos` is not 2.");
 
             position = position.ToUpperInvariant();
-
             switch(position[0])
             {
                 case 'A':
                     _file = File.A;
                     break;
-
                 case 'B':
                     _file = File.B;
                     break;
-
                 case 'C':
                     _file = File.C;
                     break;
-
                 case 'D':
                     _file = File.D;
                     break;
-
                 case 'E':
                     _file = File.E;
                     break;
-
                 case 'F':
                     _file = File.F;
                     break;
-
                 case 'G':
                     _file = File.G;
                     break;
-
                 case 'H':
                     _file = File.H;
                     break;
-
                 default:
                     throw new ArgumentException("First char of `pos` not in range A-F.");
             }
